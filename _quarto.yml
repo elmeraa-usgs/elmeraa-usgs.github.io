@@ -13,6 +13,8 @@ website:
   title: "Elmera Azadpour"
   navbar:
     right:
+      - text: About
+        href: index.qmd
       - text: Research
         href: Research.qmd
       - text: Resources
