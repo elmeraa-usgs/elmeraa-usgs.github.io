@@ -1,0 +1,14 @@
+{
+  "hash": "27752580905f716d859517792577414b",
+  "result": {
+    "markdown": "---\ntitle: \"Blog\"  # any name you want here\nlisting: posts # do this exactly\n---\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

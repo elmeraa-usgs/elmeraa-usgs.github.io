@@ -1,0 +1,14 @@
+{
+  "hash": "ea584501216a4ac0be8d6260e9242f77",
+  "result": {
+    "markdown": "---\ntitle: \"CV\"\nformat: pdf\nresources:\n  - \"pdfs/Azadpour_Elmera_CV_Apr22.pdf\"\n---\n\n::: {.cell layout-align=\"center\"}\n::: {.cell-output-display}\n![](pdfs/Azadpour_Elmera_CV_Apr22.pdf){fig-align='center' fig-pos='H' width=800px height=1100px}\n:::\n:::\n\n\n[![](images/RStudio-ah.gif)](https://github.com/allisonhorst/stats-illustrations/tree/master/rstats-artwork)\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": null,
+    "postProcess": false
+  }
+}

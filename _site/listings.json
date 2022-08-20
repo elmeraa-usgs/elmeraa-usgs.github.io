@@ -1,0 +1,16 @@
+[
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/posts/2021-09-18-black-throated-blue-warblers-visualization/black-throated-blue-warblers-visualization.html",
+      "/posts/2021-09-18-juvenile-snowshoe-hares-exploration/juvenile-snowshoe-hares-exploration.html",
+      "/posts/2021-03-31-two-sample-t-test/two-sample-t-test.html",
+      "/posts/2021-03-07-cetacean-richness/cetacean-richness.html",
+      "/posts/2021-03-07-hierarchical-clustering/hierarchical-clustering.html",
+      "/posts/2021-02-23-text-wrangling-and-analysis/text-wrangling-and-analysis.html",
+      "/posts/2021-02-23-chisquare-politcal/chisquare-politcal.html",
+      "/posts/2021-02-23-blrpalmetto/blrpalmetto.html",
+      "/posts/2021-02-23-pca/pca.html"
+    ]
+  }
+]
