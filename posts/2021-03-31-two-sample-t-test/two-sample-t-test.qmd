@@ -28,7 +28,7 @@ library(kableExtra)
 
 ## Read in sea turtles data (source: Environmental Data Initiative)
 
-```{r}
+```{r, message = FALSE}
 sea_turtles <- read_csv(here("posts", "2021-03-31-two-sample-t-test", "sharkbay_sea_turtles.csv")) 
 sea_turtles_clean <- sea_turtles %>% 
   dplyr::select(species, length, width, burr)

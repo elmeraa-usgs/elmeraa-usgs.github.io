@@ -23,7 +23,7 @@ library(GGally)
 library(stargazer)
 ```
 
-```{r}
+```{r, message = FALSE}
 ## Read in bt_warblers.csv
 warblers <- read_csv(here("posts", "2021-09-18-black-throated-blue-warblers-visualization","bt_warblers.csv"))
 ```

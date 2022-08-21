@@ -31,7 +31,7 @@ library(tidytuesdayR)
 
 ### Read in data
 
-```{r}
+```{r, message = FALSE}
 hares <- read_csv(here("posts", "2021-09-18-juvenile-snowshoe-hares-exploration","bonanza_hares.csv")) #read in data 
 ```
 
