@@ -28,6 +28,13 @@ website:
         href: https://github.com/elmeraa
       - icon: twitter
         href: https://twitter.com/EAzadpour
+  cookie-consent:
+    type: implied
+    style: headline
+    palette: light
+  google-analytics:
+    tracking-id: "G-4F5QL70Z38"
+    anonymize-ip: true
         
 format:
   html:
