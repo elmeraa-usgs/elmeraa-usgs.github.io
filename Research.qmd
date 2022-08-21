@@ -1,7 +1,11 @@
 ---
 title: "Research"
 image: "azadpour-thesis.jpg"
-format: html
+format:
+  html: 
+    fontsize: 1.3em
+    linestretch: 1.8
+    linkcolor: '#117864'
 ---
 
 ![](images/azadpour-thesis.jpg)

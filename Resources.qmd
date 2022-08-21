@@ -1,6 +1,11 @@
 ---
 title: "Resources"
-format: html
+format:
+  html: 
+    fontsize: 1.3em
+    linestretch: 1.8
+    linkcolor: '#117864'
+    monobackgroundcolor: '#C8EEDF' 
 ---
 
 ### Undergraduates/Post Bachelors:

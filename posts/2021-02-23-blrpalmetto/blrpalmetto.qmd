@@ -10,11 +10,10 @@ categories: [code, analysis, binary logistic regression]
 image: "palmetto.jpg"
 ---
 
-### To access data, html and Rmd files:
+### To access data, html and Rmd/qmd files:
 
--   https://github.com/elmeraa/244-assignment2
--   you will find palmetto data in the "data" folder
--   you will find the Rmd and html files as "a2-task2" in the "src" folder
+-   the palmetto data can be found in the *data* folder of [this repo](https://github.com/elmeraa/244-assignment2); the Rmd and html files, denoted as *a2-task2*, can be found in the *src* folder
+- the qmd format can be found [here](https://github.com/elmeraa/elmeraa.github.io/tree/main/posts/2021-02-23-blrpalmetto)
 
 ## Load packages
 

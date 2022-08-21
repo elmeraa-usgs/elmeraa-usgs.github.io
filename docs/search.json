@@ -102,7 +102,7 @@
     "href": "posts/2021-02-23-chisquare-politcal/chisquare-politcal.html",
     "title": "Survey responses of political affiliation and recognition as an environmentalist with chi-square analysis",
     "section": "",
-    "text": "library(tidyverse)\nlibrary(here)\nlibrary(janitor)\nlibrary(broom)\nlibrary(kableExtra)\n\n\n\n\nhttps://github.com/elmeraa/206-assignment6\nyou will find survey data in the “data” folder\nyou will find the Rmd and html files as “a6-task2” in the “src” folder"
+    "text": "library(tidyverse)\nlibrary(here)\nlibrary(janitor)\nlibrary(broom)\nlibrary(kableExtra)\n\n\n\n\nthe survey data can be found in the data folder of this repo; the Rmd and html files, denoted as a6-task2, can be found in the src folder\nthe qmd format can be found here"
   },
   {
     "objectID": "posts/2021-02-23-chisquare-politcal/chisquare-politcal.html#introduction",
@@ -116,7 +116,7 @@
     "href": "posts/2021-02-23-chisquare-politcal/chisquare-politcal.html#chi-square-results-and-summary",
     "title": "Survey responses of political affiliation and recognition as an environmentalist with chi-square analysis",
     "section": "Chi-square results and summary",
-    "text": "Chi-square results and summary\nA chi-square test for independence compares two variables in a contingency table to see if they are related. In a more general sense, it tests to see whether distributions of categorical variables differ from each another. For this analysis, there is a significant association (i.e. non-independence) between political affiliation and and if a person considers themself an environmentalist (\\(\\chi\\)2(2) = 81.24, p-value = 2.29e-18).\n\nCitations:\n\nAndrews Forest LTER Site and C. Batavia. 2019. Influences on charitable giving for conservation: Online survey data of 1,331 respondents across the US, August 2017 ver 3. Environmental Data Initiative. https://doi.org/10.6073/pasta/926e6270e324a1322a900da14d38b96c\nMetadata, including survey questions and possible responses, are here: https://portal.edirepository.org/nis/metadataviewer?packageid=knb-lter-and.5444.3"
+    "text": "Chi-square results and summary\nA chi-square test for independence compares two variables in a contingency table to see if they are related. In a more general sense, it tests to see whether distributions of categorical variables differ from each another. For this analysis, there is a significant association (i.e. non-independence) between political affiliation and and if a person considers themself an environmentalist ($\\chi$2(2) = 81.24, p-value = 2.29e-18).\n\nCitations:\n\nAndrews Forest LTER Site and C. Batavia. 2019. Influences on charitable giving for conservation: Online survey data of 1,331 respondents across the US, August 2017 ver 3. Environmental Data Initiative. https://doi.org/10.6073/pasta/926e6270e324a1322a900da14d38b96c\nMetadata, including survey questions and possible responses, are here: https://portal.edirepository.org/nis/metadataviewer?packageid=knb-lter-and.5444.3"
   },
   {
     "objectID": "posts/2021-09-18-black-throated-blue-warblers-visualization/black-throated-blue-warblers-visualization.html",
@@ -137,7 +137,7 @@
     "href": "posts/2021-09-18-juvenile-snowshoe-hares-exploration/juvenile-snowshoe-hares-exploration.html",
     "title": "Juvenile snowshoe hares exploration",
     "section": "",
-    "text": "https://github.com/elmeraa/assignment4_ESM206\nyou will find the snowshoe hares data in the “data” folder\nyou will find the Rmd and html files in the “src” folder"
+    "text": "the snowshoe hares data can be found in the data folder of this repo; the Rmd and html files can be found in the src folder\nthe qmd format can be found here"
   },
   {
     "objectID": "posts/2021-09-18-juvenile-snowshoe-hares-exploration/juvenile-snowshoe-hares-exploration.html#exploratory-findings",
@@ -200,7 +200,7 @@
     "href": "posts/2021-02-23-blrpalmetto/blrpalmetto.html",
     "title": "Binary Logistic Regression",
     "section": "",
-    "text": "https://github.com/elmeraa/244-assignment2\nyou will find palmetto data in the “data” folder\nyou will find the Rmd and html files as “a2-task2” in the “src” folder"
+    "text": "the palmetto data can be found in the data folder of this repo; the Rmd and html files, denoted as a2-task2, can be found in the src folder\nthe qmd format can be found here"
   },
   {
     "objectID": "posts/2021-02-23-blrpalmetto/blrpalmetto.html#load-packages",
@@ -298,7 +298,7 @@
     "href": "posts/2021-02-23-pca/pca.html",
     "title": "Principal Component Analysis (PCA)",
     "section": "",
-    "text": "https://github.com/elmeraa/244-Assignment1\nyou will find world countries data in the “data” folder\nyou will find the Rmd and html files as “a1-task2” in the “src” folder"
+    "text": "the world countries data can be found in the data folder of this repo; the Rmd and html files, denoted as a1-task2, can be found in the src folder\nthe qmd format can be found here"
   },
   {
     "objectID": "posts/2021-02-23-pca/pca.html#introduction",
@@ -333,6 +333,6 @@
     "href": "blog.html",
     "title": "Elmera Azadpour",
     "section": "",
-    "text": "code\n\n\nanalysis\n\n\nlinear model\n\n\n\n\nModel Selection and Justification of Black-throated Blue Warbler capture histories, Hubbard Brook Experimental Forest, 1986 - 2010 .\n\n\n\n\n\n\nSep 18, 2021\n\n\nElmera Azadpour\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\nlinear model\n\n\n\n\nSnowshoe hare data exploration and linear regression in Bonanza Creek Experimental Forest: 1999-Present.\n\n\n\n\n\n\nSep 18, 2021\n\n\nElmera Azadpour\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\nt-test\n\n\n\n\nRegression, two sample t-test, and chi-square analysis of two species of sea turtles in Shark Bay, Australia .\n\n\n\n\n\n\nMar 31, 2021\n\n\nElmera Azadpour\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\nraster\n\n\n\n\nRaster of species richness of cetacean species off the coast of California utlizing a probability threshold.\n\n\n\n\n\n\nMar 7, 2021\n\n\nElmera Azadpour\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\nhierarchical-clustering\n\n\n\n\nHierarchical clustering by complete linkage to create a dendrogram showing multivariate clustering for water chemistry by site in Santa Barbara, CA.\n\n\n\n\n\n\nMar 7, 2021\n\n\nElmera Azadpour\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\ntext\n\n\nword cloud\n\n\n\n\nCounts and visualizations for the most frequently used words in “The Origin of Species” by Charles Darwin, 6th Edition.\n\n\n\n\n\n\nFeb 23, 2021\n\n\nElmera Azadpour\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\nchi-square\n\n\n\n\nThis script analyzes the association between respondents’ political affiliation (coined “conservative” or “liberal” by self-identification) and if they consider themself an environmentalist, followed by a chi-square test for independence.\n\n\n\n\n\n\nFeb 23, 2021\n\n\nElmera Azadpour\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\nbinary logistic regression\n\n\n\n\nBinary logistic regression of two dominant Palmetto species of south-central Florida from 1981 - 2017.\n\n\n\n\n\n\nFeb 23, 2021\n\n\nElmera Azadpour\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\nPCA\n\n\n\n\nThis PCA analysis explores the relationships and loadings between 18 countries and variables including elevation (> 1200 m above sea level), precipitation of coldest quarter (mm), precipitation of driest quarter (mm), and more.\n\n\n\n\n\n\nFeb 23, 2021\n\n\nElmera Azadpour\n\n\n\n\n\n\nNo matching items"
+    "text": "code\n\n\nanalysis\n\n\nlinear model\n\n\n\n\nModel Selection and Justification of Black-throated Blue Warbler capture histories, Hubbard Brook Experimental Forest, 1986 - 2010 .\n\n\n\n\n\n\nSep 18, 2021\n\n\nElmera Azadpour\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\nlinear model\n\n\n\n\nSnowshoe hare data exploration and linear regression in Bonanza Creek Experimental Forest: 1999-Present.\n\n\n\n\n\n\nSep 18, 2021\n\n\nElmera Azadpour\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\nt-test\n\n\n\n\nRegression, two sample t-test, and chi-square analysis of two species of sea turtles in Shark Bay, Australia .\n\n\n\n\n\n\nMar 31, 2021\n\n\nElmera Azadpour\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\nraster\n\n\n\n\nRaster of species richness of cetacean species off the coast of California utlizing a probability threshold.\n\n\n\n\n\n\nMar 7, 2021\n\n\nElmera Azadpour\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\nhierarchical-clustering\n\n\n\n\nHierarchical clustering by complete linkage to create a dendrogram showing multivariate clustering for water chemistry by site in Santa Barbara, CA.\n\n\n\n\n\n\nMar 7, 2021\n\n\nElmera Azadpour\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\nhierarchical-clustering\n\n\n\n\nHierarchical clustering by complete linkage to create a dendrogram showing multivariate clustering for water chemistry by site in Santa Barbara, CA.\n\n\n\n\n\n\nMar 7, 2021\n\n\nElmera Azadpour\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\ntext\n\n\nword cloud\n\n\n\n\nCounts and visualizations for the most frequently used words in “The Origin of Species” by Charles Darwin, 6th Edition.\n\n\n\n\n\n\nFeb 23, 2021\n\n\nElmera Azadpour\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\nchi-square\n\n\n\n\nThis script analyzes the association between respondents’ political affiliation (coined “conservative” or “liberal” by self-identification) and if they consider themself an environmentalist, followed by a chi-square test for independence.\n\n\n\n\n\n\nFeb 23, 2021\n\n\nElmera Azadpour\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\nbinary logistic regression\n\n\n\n\nBinary logistic regression of two dominant Palmetto species of south-central Florida from 1981 - 2017.\n\n\n\n\n\n\nFeb 23, 2021\n\n\nElmera Azadpour\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\nPCA\n\n\n\n\nThis PCA analysis explores the relationships and loadings between 18 countries and variables including elevation (> 1200 m above sea level), precipitation of coldest quarter (mm), precipitation of driest quarter (mm), and more.\n\n\n\n\n\n\nFeb 23, 2021\n\n\nElmera Azadpour\n\n\n\n\n\n\nNo matching items"
   }
 ]

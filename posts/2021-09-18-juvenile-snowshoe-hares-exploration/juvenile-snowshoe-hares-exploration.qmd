@@ -9,15 +9,14 @@ format: html
 categories: [code, analysis, linear model]
 ---
 
-### To access data, html and Rmd files:
+### To access data, html and Rmd/qmd files:
+-   the snowshoe hares data can be found in the *data* folder of [this repo](https://github.com/elmeraa/assignment4_ESM206); the Rmd and html files can be found in the *src* folder
+-   the qmd format can be found [here](https://github.com/elmeraa/elmeraa.github.io/tree/main/posts/2021-09-18-juvenile-snowshoe-hares-exploration)
 
--   https://github.com/elmeraa/assignment4_ESM206
--   you will find the snowshoe hares data in the "data" folder
--   you will find the Rmd and html files in the "src" folder
 
 ### Load Packages
 
-```{r setup}
+```{r setup, message = FALSE}
 library(tidyverse)
 library(here)
 library(lubridate)

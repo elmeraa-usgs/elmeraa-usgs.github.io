@@ -10,11 +10,9 @@ categories: [code, analysis, linear model]
 image: "warblers.jpg"
 ---
 
-### To access data, html and Rmd files:
-
--   https://github.com/elmeraa/elmera-azadpour-206-final
--   you will find the warblers data in the "exam_data" folder
--   you will find the Rmd and html files in the "task_code" folder
+### To access data, html and Rmd/qmd files:
+-   the warblers data can be found in the *exam_data* folder of [this repo]( https://github.com/elmeraa/elmera-azadpour-206-final); the Rmd and html files can be found in the *task_code* folder
+-   the qmd format can be found [here](https://github.com/elmeraa/elmeraa.github.io/tree/main/posts/2021-09-18-black-throated-blue-warblers-visualization)
 
 ```{r setup, message = FALSE}
 library(tidyverse)
