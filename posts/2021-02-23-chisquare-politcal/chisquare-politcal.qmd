@@ -21,9 +21,9 @@ library(kableExtra)
 ```
 
 ### To access data, html and Rmd/qmd files:
--   the survey data can be found in the *data* folder of [this repo](https://github.com/elmeraa/206-assignment6); the Rmd and html files, denoted as *a6-task2*, can be found in the *src* folder
-- the qmd format can be found [here](https://github.com/elmeraa/elmeraa.github.io/tree/main/posts/2021-02-23-chisquare-politcal)
 
+-   the survey data can be found in the *data* folder of [this repo](https://github.com/elmeraa/206-assignment6); the Rmd and html files, denoted as *a6-task2*, can be found in the *src* folder
+-   the qmd format can be found [here](https://github.com/elmeraa/elmeraa.github.io/tree/main/posts/2021-02-23-chisquare-politcal)
 
 ## Introduction:
 
