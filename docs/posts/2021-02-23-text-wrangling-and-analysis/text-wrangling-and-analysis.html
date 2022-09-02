@@ -245,8 +245,17 @@ cookieconsent.run({
 
 
 
-<section id="load-packages" class="level2">
-<h2 class="anchored" data-anchor-id="load-packages">Load packages</h2>
+<section id="about" class="level3">
+<h3 class="anchored" data-anchor-id="about">About</h3>
+<p>This blog post conducts a text mining and NRC sentiment analysis using text from “The Origin of Species” by Charles Darwin, 6th Edition.</p>
+<p>To access data, html and Rmd/qmd files:</p>
+<ul>
+<li><p>the Origin of Species pdf can be found in the data folder <a href="https://github.com/elmeraa/244-Assignment3">here</a>; the Rmd and html files, denoted as a3-task3, can be found in the src folder</p></li>
+<li><p>the qmd format can be found <a href="https://github.com/elmeraa/elmeraa.github.io/tree/main/posts/2021-02-23-text-wrangling-and-analysis">here</a></p></li>
+</ul>
+</section>
+<section id="load-packages" class="level3">
+<h3 class="anchored" data-anchor-id="load-packages">Load packages</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
@@ -255,22 +264,15 @@ cookieconsent.run({
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pdftools)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggwordcloud)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="to-access-data-html-and-rmdqmd-files" class="level3">
-<h3 class="anchored" data-anchor-id="to-access-data-html-and-rmdqmd-files">To access data, html and Rmd/qmd files:</h3>
-<ul>
-<li>the Origin of Species pdf can be found in the <em>data</em> folder of <a href="https://github.com/elmeraa/244-Assignment3">this repo</a>; the Rmd and html files, denoted as <em>a3-task3</em>, can be found in the <em>src</em> folder</li>
-<li>the qmd format can be found <a href="https://github.com/elmeraa/elmeraa.github.io/tree/main/posts/2021-02-23-text-wrangling-and-analysis">here</a></li>
-</ul>
 </section>
-</section>
-<section id="read-in-the-origin-of-species-6th-edition-by-darwin" class="level2">
-<h2 class="anchored" data-anchor-id="read-in-the-origin-of-species-6th-edition-by-darwin">Read in the Origin of Species, 6th Edition by Darwin</h2>
+<section id="read-in-the-origin-of-species-6th-edition-by-darwin" class="level3">
+<h3 class="anchored" data-anchor-id="read-in-the-origin-of-species-6th-edition-by-darwin">Read in the Origin of Species, 6th Edition by Darwin</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>os_text <span class="ot">&lt;-</span> <span class="fu">pdf_text</span>(<span class="fu">here</span>(<span class="st">"posts"</span>, <span class="st">"2021-02-23-text-wrangling-and-analysis"</span>, <span class="st">"originofspecies6th-darwin.pdf"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="text-into-a-data-frame-then-wrangling-with-the-tidyverse-break-it-up-by-chapter-and-do-some-analyses." class="level2">
-<h2 class="anchored" data-anchor-id="text-into-a-data-frame-then-wrangling-with-the-tidyverse-break-it-up-by-chapter-and-do-some-analyses.">Text into a data frame, then wrangling with the tidyverse, break it up by chapter, and do some analyses.</h2>
+<section id="text-into-a-data-frame-then-wrangling-with-the-tidyverse-break-it-up-by-chapter-and-do-some-basic-analyses." class="level3">
+<h3 class="anchored" data-anchor-id="text-into-a-data-frame-then-wrangling-with-the-tidyverse-break-it-up-by-chapter-and-do-some-basic-analyses.">Text into a data frame, then wrangling with the <code>tidyverse</code>, break it up by chapter, and do some basic analyses.</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>os_tidy <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(os_text) <span class="sc">%&gt;%</span> </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text_full =</span> <span class="fu">str_split</span>(os_text, <span class="at">pattern =</span> <span class="st">'</span><span class="sc">\\</span><span class="st">n'</span>)) <span class="sc">%&gt;%</span> </span>
@@ -289,8 +291,8 @@ cookieconsent.run({
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">chapter =</span> <span class="fu">as.numeric</span>(no))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="word-count-by-chapter" class="level2">
-<h2 class="anchored" data-anchor-id="word-count-by-chapter">Word count by Chapter</h2>
+<section id="word-count-by-chapter" class="level3">
+<h3 class="anchored" data-anchor-id="word-count-by-chapter">Word count by Chapter</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>os_tokens <span class="ot">&lt;-</span> os_df <span class="sc">%&gt;%</span> </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text_full) <span class="sc">%&gt;%</span> </span>
@@ -304,8 +306,8 @@ cookieconsent.run({
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(chapter, word) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="remove-stop-words-and-recounting-again" class="level2">
-<h2 class="anchored" data-anchor-id="remove-stop-words-and-recounting-again">Remove stop words and recounting again</h2>
+<section id="remove-stop-words-and-recounting-again" class="level3">
+<h3 class="anchored" data-anchor-id="remove-stop-words-and-recounting-again">Remove stop words and recounting again</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>os_nonstop_words <span class="ot">&lt;-</span> os_tokens_clean <span class="sc">%&gt;%</span> </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(stop_words)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -316,27 +318,51 @@ cookieconsent.run({
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(chapter, word) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="top-5-words-by-chapter" class="level2">
-<h2 class="anchored" data-anchor-id="top-5-words-by-chapter">Top 5 words by chapter</h2>
+<section id="top-5-words-by-chapter" class="level3">
+<h3 class="anchored" data-anchor-id="top-5-words-by-chapter">Top 5 words by chapter</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>top_5_words <span class="ot">&lt;-</span> nonstop_counts <span class="sc">%&gt;%</span> </span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(chapter) <span class="sc">%&gt;%</span> </span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>n) <span class="sc">%&gt;%</span> </span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="do">## vizualization</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>( <span class="at">data =</span> top_5_words,</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(word,n )) <span class="sc">+</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>chapter, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>ch_names <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"1"</span> <span class="ot">=</span><span class="st">"Chapter 1"</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2"</span> <span class="ot">=</span> <span class="st">"Chapter 2"</span>,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"3"</span> <span class="ot">=</span> <span class="st">"Chapter 3"</span>,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"4"</span> <span class="ot">=</span> <span class="st">"Chapter 4"</span>,</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"5"</span> <span class="ot">=</span> <span class="st">"Chapter 5"</span>,</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"6"</span> <span class="ot">=</span> <span class="st">"Chapter 6"</span>,</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"7"</span> <span class="ot">=</span> <span class="st">"Chapter 7"</span>,</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"8"</span> <span class="ot">=</span> <span class="st">"Chapter 8"</span>,</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">"9"</span> <span class="ot">=</span> <span class="st">"Chapter 9"</span>,</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">"10"</span> <span class="ot">=</span> <span class="st">"Chapter 10"</span>,</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">"11"</span> <span class="ot">=</span> <span class="st">"Chapter 11"</span>,</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  <span class="st">"12"</span> <span class="ot">=</span> <span class="st">"Chapter 12"</span>,</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  <span class="st">"13"</span> <span class="ot">=</span> <span class="st">"Chapter 13"</span>,</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  <span class="st">"14"</span> <span class="ot">=</span> <span class="st">"Chapter 14"</span>,</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>  <span class="st">"15"</span> <span class="ot">=</span> <span class="st">"Chapter 15"</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a> )</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>ch_labeller <span class="ot">&lt;-</span> <span class="cf">function</span>(variable,value){</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(ch_names[value])</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="do">## vizualization</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>( <span class="at">data =</span> top_5_words,</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="fu">reorder</span>(word, n), n )) <span class="sc">+</span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"forestgreen"</span>) <span class="sc">+</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>chapter, <span class="at">scales =</span> <span class="st">"free"</span>, <span class="at">labeller=</span>ch_labeller) <span class="sc">+</span></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Word"</span>, <span class="at">y =</span> <span class="st">" Count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="text-wrangling-and-analysis_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
-<section id="word-cloud-for-all-text" class="level2">
-<h2 class="anchored" data-anchor-id="word-cloud-for-all-text">Word cloud for all text</h2>
+<section id="word-cloud-for-all-text" class="level3">
+<h3 class="anchored" data-anchor-id="word-cloud-for-all-text">Word cloud for all text</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>nonstop_counts_full <span class="ot">&lt;-</span> os_nonstop_words <span class="sc">%&gt;%</span> </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word) </span>
@@ -358,8 +384,8 @@ cookieconsent.run({
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ggsave(here("src","originofspecies-wc-ea.png"), width = 8, height = 5) # to save</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="sentiment-analysis-using-nrc-lexicon" class="level2">
-<h2 class="anchored" data-anchor-id="sentiment-analysis-using-nrc-lexicon">Sentiment analysis using “NRC” lexicon</h2>
+<section id="sentiment-analysis-using-nrc-lexicon" class="level3">
+<h3 class="anchored" data-anchor-id="sentiment-analysis-using-nrc-lexicon">Sentiment analysis using “NRC” lexicon</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="do">## nrc to just check out</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>os_nrc <span class="ot">&lt;-</span> os_nonstop_words <span class="sc">%&gt;%</span> </span>
@@ -370,44 +396,23 @@ cookieconsent.run({
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>os_nrc_counts <span class="ot">&lt;-</span> os_nrc <span class="sc">%&gt;%</span> </span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(chapter, sentiment)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>ch_names <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"1"</span> <span class="ot">=</span><span class="st">"Chapter 1"</span>,</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2"</span> <span class="ot">=</span> <span class="st">"Chapter 2"</span>,</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"3"</span> <span class="ot">=</span> <span class="st">"Chapter 3"</span>,</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"4"</span> <span class="ot">=</span> <span class="st">"Chapter 4"</span>,</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"5"</span> <span class="ot">=</span> <span class="st">"Chapter 5"</span>,</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"6"</span> <span class="ot">=</span> <span class="st">"Chapter 6"</span>,</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"7"</span> <span class="ot">=</span> <span class="st">"Chapter 7"</span>,</span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"8"</span> <span class="ot">=</span> <span class="st">"Chapter 8"</span>,</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"9"</span> <span class="ot">=</span> <span class="st">"Chapter 9"</span>,</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"10"</span> <span class="ot">=</span> <span class="st">"Chapter 10"</span>,</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">"11"</span> <span class="ot">=</span> <span class="st">"Chapter 11"</span>,</span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">"12"</span> <span class="ot">=</span> <span class="st">"Chapter 12"</span>,</span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">"13"</span> <span class="ot">=</span> <span class="st">"Chapter 13"</span>,</span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  <span class="st">"14"</span> <span class="ot">=</span> <span class="st">"Chapter 14"</span>,</span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>  <span class="st">"15"</span> <span class="ot">=</span> <span class="st">"Chapter 15"</span></span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a> )</span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>ch_labeller <span class="ot">&lt;-</span> <span class="cf">function</span>(variable,value){</span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(ch_names[value])</span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> os_nrc_counts, <span class="fu">aes</span>(<span class="at">x =</span> sentiment, <span class="at">y =</span> n)) <span class="sc">+</span></span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>chapter, <span class="at">labeller=</span>ch_labeller) <span class="sc">+</span></span>
-<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Word Count"</span>, <span class="at">x =</span> <span class="st">"NRC sentiment"</span>, <span class="at">title =</span> <span class="st">"Sentiment analysis of the Origin of Species by Charles Darwin</span><span class="sc">\n</span><span class="st">using NRC from Saif Mohammad and Peter Turney"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="text-wrangling-and-analysis_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>os_nrc_viz<span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> os_nrc_counts, <span class="fu">aes</span>(<span class="at">x =</span> sentiment, <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>chapter, <span class="at">labeller=</span>ch_labeller) <span class="sc">+</span> <span class="co"># ch_labeller function defined in steps above </span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">20</span>, <span class="at">r =</span> <span class="dv">0</span>, <span class="at">b =</span> <span class="dv">0</span>, <span class="at">l =</span> <span class="dv">20</span>))) <span class="sc">+</span> </span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Word Count"</span>, <span class="at">x =</span> <span class="st">"NRC sentiment"</span>, <span class="at">title =</span> <span class="st">"Sentiment analysis of the Origin of Species by Charles Darwin </span><span class="sc">\n</span><span class="st">using NRC from Saif Mohammad and Peter Turney"</span>) </span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"origin-of-species-nrc-analysis.png"</span>, os_nrc_viz, <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="dv">8</span>, <span class="at">units =</span> <span class="st">"in"</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
+<p><img src="origin-of-species-nrc-analysis.png" class="img-fluid"></p>
 </section>
-<section id="citations" class="level2">
-<h2 class="anchored" data-anchor-id="citations">Citations:</h2>
+<section id="citations" class="level3">
+<h3 class="anchored" data-anchor-id="citations">Citations:</h3>
 <ul>
 <li>NRC lexicon: Crowdsourcing a Word-Emotion Association Lexicon, Saif Mohammad and Peter Turney, Computational Intelligence, 29 (3), 436-465, 2013.</li>
-<li>Origin of Species Text: https://laurieximenez.files.wordpress.com/2019/04/the-origin-of-species_charles-darwin.pdf</li>
+<li><a href="https://laurieximenez.files.wordpress.com/2019/04/the-origin-of-species_charles-darwin.pdf">Origin of Species Text</a></li>
 </ul>
 
 

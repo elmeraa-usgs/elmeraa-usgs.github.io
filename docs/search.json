@@ -39,63 +39,7 @@
     "href": "posts/2021-02-23-text-wrangling-and-analysis/text-wrangling-and-analysis.html",
     "title": "Text wrangling and analysis",
     "section": "",
-    "text": "library(tidyverse)\nlibrary(here)\nlibrary(tidytext)\nlibrary(textdata)\nlibrary(pdftools)\nlibrary(ggwordcloud)\n\n\n\n\nthe Origin of Species pdf can be found in the data folder of this repo; the Rmd and html files, denoted as a3-task3, can be found in the src folder\nthe qmd format can be found here"
-  },
-  {
-    "objectID": "posts/2021-02-23-text-wrangling-and-analysis/text-wrangling-and-analysis.html#read-in-the-origin-of-species-6th-edition-by-darwin",
-    "href": "posts/2021-02-23-text-wrangling-and-analysis/text-wrangling-and-analysis.html#read-in-the-origin-of-species-6th-edition-by-darwin",
-    "title": "Text wrangling and analysis",
-    "section": "Read in the Origin of Species, 6th Edition by Darwin",
-    "text": "Read in the Origin of Species, 6th Edition by Darwin\n\nos_text <- pdf_text(here(\"posts\", \"2021-02-23-text-wrangling-and-analysis\", \"originofspecies6th-darwin.pdf\"))"
-  },
-  {
-    "objectID": "posts/2021-02-23-text-wrangling-and-analysis/text-wrangling-and-analysis.html#text-into-a-data-frame-then-wrangling-with-the-tidyverse-break-it-up-by-chapter-and-do-some-analyses.",
-    "href": "posts/2021-02-23-text-wrangling-and-analysis/text-wrangling-and-analysis.html#text-into-a-data-frame-then-wrangling-with-the-tidyverse-break-it-up-by-chapter-and-do-some-analyses.",
-    "title": "Text wrangling and analysis",
-    "section": "Text into a data frame, then wrangling with the tidyverse, break it up by chapter, and do some analyses.",
-    "text": "Text into a data frame, then wrangling with the tidyverse, break it up by chapter, and do some analyses.\n\nos_tidy <- data.frame(os_text) %>% \n  mutate(text_full = str_split(os_text, pattern = '\\\\n')) %>% \n  unnest(text_full) %>% \n  mutate(text_full = str_trim(text_full))\n\n\nos_df <- os_tidy %>% \n  slice(-(1:184)) %>% \nmutate(chapter = case_when(\n     str_detect(text_full, \"CHAPTER\") ~ str_extract(text_full, \"CHAPTER [1-9]+\"),\n     TRUE ~ NA_character_\n   )) %>% \n  fill(chapter) %>% \n  separate(col = chapter, into = c(\"cha\", \"no\"), sep = \" \") %>% \n  mutate(chapter = as.numeric(no))"
-  },
-  {
-    "objectID": "posts/2021-02-23-text-wrangling-and-analysis/text-wrangling-and-analysis.html#word-count-by-chapter",
-    "href": "posts/2021-02-23-text-wrangling-and-analysis/text-wrangling-and-analysis.html#word-count-by-chapter",
-    "title": "Text wrangling and analysis",
-    "section": "Word count by Chapter",
-    "text": "Word count by Chapter\n\nos_tokens <- os_df %>% \n  unnest_tokens(word, text_full) %>% \n  select(-os_text) \n\nos_tokens_clean <- os_tokens %>%\n   mutate(word = str_replace(word, \"[0-9-]+\", NA_character_)) %>% \n  drop_na()\n\nos_wordcount <- os_tokens_clean %>% \n  count(chapter, word)"
-  },
-  {
-    "objectID": "posts/2021-02-23-text-wrangling-and-analysis/text-wrangling-and-analysis.html#remove-stop-words-and-recounting-again",
-    "href": "posts/2021-02-23-text-wrangling-and-analysis/text-wrangling-and-analysis.html#remove-stop-words-and-recounting-again",
-    "title": "Text wrangling and analysis",
-    "section": "Remove stop words and recounting again",
-    "text": "Remove stop words and recounting again\n\nos_nonstop_words <- os_tokens_clean %>% \n  anti_join(stop_words)\n\nJoining, by = \"word\"\n\nnonstop_counts <- os_nonstop_words %>% \n  count(chapter, word)"
-  },
-  {
-    "objectID": "posts/2021-02-23-text-wrangling-and-analysis/text-wrangling-and-analysis.html#top-5-words-by-chapter",
-    "href": "posts/2021-02-23-text-wrangling-and-analysis/text-wrangling-and-analysis.html#top-5-words-by-chapter",
-    "title": "Text wrangling and analysis",
-    "section": "Top 5 words by chapter",
-    "text": "Top 5 words by chapter\n\ntop_5_words <- nonstop_counts %>% \n  group_by(chapter) %>% \n  arrange(-n) %>% \n  slice(1:5)\n\n## vizualization\nggplot( data = top_5_words,\n        aes(word,n )) +\n  geom_col(fill = \"blue\") +\n  facet_wrap(~chapter, scales = \"free\") +\n  coord_flip()"
-  },
-  {
-    "objectID": "posts/2021-02-23-text-wrangling-and-analysis/text-wrangling-and-analysis.html#word-cloud-for-all-text",
-    "href": "posts/2021-02-23-text-wrangling-and-analysis/text-wrangling-and-analysis.html#word-cloud-for-all-text",
-    "title": "Text wrangling and analysis",
-    "section": "Word cloud for all text",
-    "text": "Word cloud for all text\n\nnonstop_counts_full <- os_nonstop_words %>% \n  count(word) \n\nos_top100_removesps <- nonstop_counts_full %>% \n  arrange(-n) %>% \n  slice(1:100)\n\nos_cloud <- ggplot(data = os_top100_removesps, aes(label = word)) +\n  geom_text_wordcloud(aes(color = n, size = n), shape = \"circle\") +\n  scale_size_area(max_size = 10) +\n  scale_color_gradient(low = \"darkseagreen\", high = \"forestgreen\") +\n  theme_minimal()\n\nos_cloud\n\n\n\n#ggsave(here(\"src\",\"originofspecies-wc-ea.png\"), width = 8, height = 5) # to save"
-  },
-  {
-    "objectID": "posts/2021-02-23-text-wrangling-and-analysis/text-wrangling-and-analysis.html#sentiment-analysis-using-nrc-lexicon",
-    "href": "posts/2021-02-23-text-wrangling-and-analysis/text-wrangling-and-analysis.html#sentiment-analysis-using-nrc-lexicon",
-    "title": "Text wrangling and analysis",
-    "section": "Sentiment analysis using “NRC” lexicon",
-    "text": "Sentiment analysis using “NRC” lexicon\n\n## nrc to just check out\nos_nrc <- os_nonstop_words %>% \n  inner_join(get_sentiments(\"nrc\"))\n\nJoining, by = \"word\"\n\nos_nrc_counts <- os_nrc %>% \n  count(chapter, sentiment)\n\nch_names <- list(\n  \"1\" =\"Chapter 1\",\n  \"2\" = \"Chapter 2\",\n  \"3\" = \"Chapter 3\",\n  \"4\" = \"Chapter 4\",\n  \"5\" = \"Chapter 5\",\n  \"6\" = \"Chapter 6\",\n  \"7\" = \"Chapter 7\",\n  \"8\" = \"Chapter 8\",\n  \"9\" = \"Chapter 9\",\n  \"10\" = \"Chapter 10\",\n  \"11\" = \"Chapter 11\",\n  \"12\" = \"Chapter 12\",\n  \"13\" = \"Chapter 13\",\n  \"14\" = \"Chapter 14\",\n  \"15\" = \"Chapter 15\"\n )\n\nch_labeller <- function(variable,value){\n  return(ch_names[value])\n}\n\nggplot(data = os_nrc_counts, aes(x = sentiment, y = n)) +\n  geom_col() +\n  facet_wrap(~chapter, labeller=ch_labeller) +\n  coord_flip() +\n  theme_minimal() +\n  labs(y = \"Word Count\", x = \"NRC sentiment\", title = \"Sentiment analysis of the Origin of Species by Charles Darwin\\nusing NRC from Saif Mohammad and Peter Turney\")"
-  },
-  {
-    "objectID": "posts/2021-02-23-text-wrangling-and-analysis/text-wrangling-and-analysis.html#citations",
-    "href": "posts/2021-02-23-text-wrangling-and-analysis/text-wrangling-and-analysis.html#citations",
-    "title": "Text wrangling and analysis",
-    "section": "Citations:",
-    "text": "Citations:\n\nNRC lexicon: Crowdsourcing a Word-Emotion Association Lexicon, Saif Mohammad and Peter Turney, Computational Intelligence, 29 (3), 436-465, 2013.\nOrigin of Species Text: https://laurieximenez.files.wordpress.com/2019/04/the-origin-of-species_charles-darwin.pdf"
+    "text": "Load packages\n\nlibrary(tidyverse)\nlibrary(here)\nlibrary(tidytext)\nlibrary(textdata)\nlibrary(pdftools)\nlibrary(ggwordcloud)\n\n\n\nRead in the Origin of Species, 6th Edition by Darwin\n\nos_text <- pdf_text(here(\"posts\", \"2021-02-23-text-wrangling-and-analysis\", \"originofspecies6th-darwin.pdf\"))\n\n\n\nText into a data frame, then wrangling with the tidyverse, break it up by chapter, and do some basic analyses.\n\nos_tidy <- data.frame(os_text) %>% \n  mutate(text_full = str_split(os_text, pattern = '\\\\n')) %>% \n  unnest(text_full) %>% \n  mutate(text_full = str_trim(text_full))\n\n\nos_df <- os_tidy %>% \n  slice(-(1:184)) %>% \nmutate(chapter = case_when(\n     str_detect(text_full, \"CHAPTER\") ~ str_extract(text_full, \"CHAPTER [1-9]+\"),\n     TRUE ~ NA_character_\n   )) %>% \n  fill(chapter) %>% \n  separate(col = chapter, into = c(\"cha\", \"no\"), sep = \" \") %>% \n  mutate(chapter = as.numeric(no))\n\n\n\nWord count by Chapter\n\nos_tokens <- os_df %>% \n  unnest_tokens(word, text_full) %>% \n  select(-os_text) \n\nos_tokens_clean <- os_tokens %>%\n   mutate(word = str_replace(word, \"[0-9-]+\", NA_character_)) %>% \n  drop_na()\n\nos_wordcount <- os_tokens_clean %>% \n  count(chapter, word) \n\n\n\nRemove stop words and recounting again\n\nos_nonstop_words <- os_tokens_clean %>% \n  anti_join(stop_words)\n\nJoining, by = \"word\"\n\nnonstop_counts <- os_nonstop_words %>% \n  count(chapter, word) \n\n\n\nTop 5 words by chapter\n\ntop_5_words <- nonstop_counts %>% \n  group_by(chapter) %>% \n  arrange(-n) %>% \n  slice(1:5)\n\nch_names <- list(\n  \"1\" =\"Chapter 1\",\n  \"2\" = \"Chapter 2\",\n  \"3\" = \"Chapter 3\",\n  \"4\" = \"Chapter 4\",\n  \"5\" = \"Chapter 5\",\n  \"6\" = \"Chapter 6\",\n  \"7\" = \"Chapter 7\",\n  \"8\" = \"Chapter 8\",\n  \"9\" = \"Chapter 9\",\n  \"10\" = \"Chapter 10\",\n  \"11\" = \"Chapter 11\",\n  \"12\" = \"Chapter 12\",\n  \"13\" = \"Chapter 13\",\n  \"14\" = \"Chapter 14\",\n  \"15\" = \"Chapter 15\"\n )\n\nch_labeller <- function(variable,value){\n  return(ch_names[value])\n}\n\n## vizualization\nggplot( data = top_5_words,\n        aes(reorder(word, n), n )) +\n  geom_col(fill = \"forestgreen\") +\n  facet_wrap(~chapter, scales = \"free\", labeller=ch_labeller) +\n  coord_flip() +\n  theme_minimal() +\n  labs(x = \"Word\", y = \" Count\")\n\n\n\n\n\n\nWord cloud for all text\n\nnonstop_counts_full <- os_nonstop_words %>% \n  count(word) \n\nos_top100_removesps <- nonstop_counts_full %>% \n  arrange(-n) %>% \n  slice(1:100)\n\nos_cloud <- ggplot(data = os_top100_removesps, aes(label = word)) +\n  geom_text_wordcloud(aes(color = n, size = n), shape = \"circle\") +\n  scale_size_area(max_size = 10) +\n  scale_color_gradient(low = \"darkseagreen\", high = \"forestgreen\") +\n  theme_minimal()\n\nos_cloud\n\n\n\n#ggsave(here(\"src\",\"originofspecies-wc-ea.png\"), width = 8, height = 5) # to save\n\n\n\nSentiment analysis using “NRC” lexicon\n\n## nrc to just check out\nos_nrc <- os_nonstop_words %>% \n  inner_join(get_sentiments(\"nrc\"))\n\nJoining, by = \"word\"\n\nos_nrc_counts <- os_nrc %>% \n  count(chapter, sentiment)\n\nos_nrc_viz<- ggplot(data = os_nrc_counts, aes(x = sentiment, y = n)) +\n  geom_col() +\n  facet_wrap(~chapter, labeller=ch_labeller) + # ch_labeller function defined in steps above \n  coord_flip() +\n  theme_minimal(base_size = 14) +\n  theme(axis.title.y = element_text(margin = margin(t = 20, r = 0, b = 0, l = 20))) + \n  labs(y = \"Word Count\", x = \"NRC sentiment\", title = \"Sentiment analysis of the Origin of Species by Charles Darwin \\nusing NRC from Saif Mohammad and Peter Turney\") \n\nggsave(\"origin-of-species-nrc-analysis.png\", os_nrc_viz, width = 12, height = 8, units = \"in\", dpi = 300)\n\n\n\n\nCitations:\n\nNRC lexicon: Crowdsourcing a Word-Emotion Association Lexicon, Saif Mohammad and Peter Turney, Computational Intelligence, 29 (3), 436-465, 2013.\nOrigin of Species Text"
   },
   {
     "objectID": "posts/2021-02-23-chisquare-politcal/chisquare-politcal.html",

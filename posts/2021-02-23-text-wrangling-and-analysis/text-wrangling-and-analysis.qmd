@@ -10,7 +10,17 @@ categories: [code, analysis, text, word cloud]
 image: "wordcloud.jpg"
 ---
 
-## Load packages
+### About
+
+This blog post conducts a text mining and NRC sentiment analysis using text from "The Origin of Species" by Charles Darwin, 6th Edition.
+
+To access data, html and Rmd/qmd files:
+
+-   the Origin of Species pdf can be found in the data folder [here](https://github.com/elmeraa/244-Assignment3); the Rmd and html files, denoted as a3-task3, can be found in the src folder
+
+-   the qmd format can be found [here](https://github.com/elmeraa/elmeraa.github.io/tree/main/posts/2021-02-23-text-wrangling-and-analysis)
+
+### Load packages
 
 ```{r setup, message = FALSE}
 library(tidyverse)
@@ -21,19 +31,13 @@ library(pdftools)
 library(ggwordcloud)
 ```
 
-### To access data, html and Rmd/qmd files:
-
--   the Origin of Species pdf can be found in the *data* folder of [this repo](https://github.com/elmeraa/244-Assignment3); the Rmd and html files, denoted as *a3-task3*, can be found in the *src* folder
--   the qmd format can be found [here](https://github.com/elmeraa/elmeraa.github.io/tree/main/posts/2021-02-23-text-wrangling-and-analysis)
-
-
-## Read in the Origin of Species, 6th Edition by Darwin
+### Read in the Origin of Species, 6th Edition by Darwin
 
 ```{r, warning=FALSE}
 os_text <- pdf_text(here("posts", "2021-02-23-text-wrangling-and-analysis", "originofspecies6th-darwin.pdf"))
 ```
 
-## Text into a data frame, then wrangling with the tidyverse, break it up by chapter, and do some analyses.
+### Text into a data frame, then wrangling with the `tidyverse`, break it up by chapter, and do some basic analyses.
 
 ```{r, warning=FALSE}
 os_tidy <- data.frame(os_text) %>% 
@@ -55,7 +59,7 @@ mutate(chapter = case_when(
   mutate(chapter = as.numeric(no))
 ```
 
-## Word count by Chapter
+### Word count by Chapter
 
 ```{r, warning=FALSE}
 os_tokens <- os_df %>% 
@@ -70,7 +74,7 @@ os_wordcount <- os_tokens_clean %>%
   count(chapter, word) 
 ```
 
-## Remove stop words and recounting again
+### Remove stop words and recounting again
 
 ```{r, warning=FALSE}
 os_nonstop_words <- os_tokens_clean %>% 
@@ -81,52 +85,13 @@ nonstop_counts <- os_nonstop_words %>%
   
 ```
 
-## Top 5 words by chapter
+### Top 5 words by chapter
 
 ```{r, warning=FALSE}
 top_5_words <- nonstop_counts %>% 
   group_by(chapter) %>% 
   arrange(-n) %>% 
   slice(1:5)
-
-## vizualization
-ggplot( data = top_5_words,
-        aes(word,n )) +
-  geom_col(fill = "blue") +
-  facet_wrap(~chapter, scales = "free") +
-  coord_flip()
-```
-
-## Word cloud for all text
-
-```{r, warning=FALSE}
-nonstop_counts_full <- os_nonstop_words %>% 
-  count(word) 
-
-os_top100_removesps <- nonstop_counts_full %>% 
-  arrange(-n) %>% 
-  slice(1:100)
-
-os_cloud <- ggplot(data = os_top100_removesps, aes(label = word)) +
-  geom_text_wordcloud(aes(color = n, size = n), shape = "circle") +
-  scale_size_area(max_size = 10) +
-  scale_color_gradient(low = "darkseagreen", high = "forestgreen") +
-  theme_minimal()
-
-os_cloud
-
-#ggsave(here("src","originofspecies-wc-ea.png"), width = 8, height = 5) # to save
-```
-
-## Sentiment analysis using "NRC" lexicon
-
-```{r, warning=FALSE}
-## nrc to just check out
-os_nrc <- os_nonstop_words %>% 
-  inner_join(get_sentiments("nrc"))
-
-os_nrc_counts <- os_nrc %>% 
-  count(chapter, sentiment)
 
 ch_names <- list(
   "1" ="Chapter 1",
@@ -150,16 +115,61 @@ ch_labeller <- function(variable,value){
   return(ch_names[value])
 }
 
-ggplot(data = os_nrc_counts, aes(x = sentiment, y = n)) +
-  geom_col() +
-  facet_wrap(~chapter, labeller=ch_labeller) +
+## vizualization
+ggplot( data = top_5_words,
+        aes(reorder(word, n), n )) +
+  geom_col(fill = "forestgreen") +
+  facet_wrap(~chapter, scales = "free", labeller=ch_labeller) +
   coord_flip() +
   theme_minimal() +
-  labs(y = "Word Count", x = "NRC sentiment", title = "Sentiment analysis of the Origin of Species by Charles Darwin\nusing NRC from Saif Mohammad and Peter Turney")
-  
+  labs(x = "Word", y = " Count")
 ```
 
-## Citations:
+### Word cloud for all text
+
+```{r, warning=FALSE}
+nonstop_counts_full <- os_nonstop_words %>% 
+  count(word) 
+
+os_top100_removesps <- nonstop_counts_full %>% 
+  arrange(-n) %>% 
+  slice(1:100)
+
+os_cloud <- ggplot(data = os_top100_removesps, aes(label = word)) +
+  geom_text_wordcloud(aes(color = n, size = n), shape = "circle") +
+  scale_size_area(max_size = 10) +
+  scale_color_gradient(low = "darkseagreen", high = "forestgreen") +
+  theme_minimal()
+
+os_cloud
+
+#ggsave(here("src","originofspecies-wc-ea.png"), width = 8, height = 5) # to save
+```
+
+### Sentiment analysis using "NRC" lexicon
+
+```{r, warning=FALSE}
+## nrc to just check out
+os_nrc <- os_nonstop_words %>% 
+  inner_join(get_sentiments("nrc"))
+
+os_nrc_counts <- os_nrc %>% 
+  count(chapter, sentiment)
+
+os_nrc_viz<- ggplot(data = os_nrc_counts, aes(x = sentiment, y = n)) +
+  geom_col() +
+  facet_wrap(~chapter, labeller=ch_labeller) + # ch_labeller function defined in steps above 
+  coord_flip() +
+  theme_minimal(base_size = 14) +
+  theme(axis.title.y = element_text(margin = margin(t = 20, r = 0, b = 0, l = 20))) + 
+  labs(y = "Word Count", x = "NRC sentiment", title = "Sentiment analysis of the Origin of Species by Charles Darwin \nusing NRC from Saif Mohammad and Peter Turney") 
+
+ggsave("origin-of-species-nrc-analysis.png", os_nrc_viz, width = 12, height = 8, units = "in", dpi = 300)
+```
+
+![](origin-of-species-nrc-analysis.png)
+
+### Citations:
 
 -   NRC lexicon: Crowdsourcing a Word-Emotion Association Lexicon, Saif Mohammad and Peter Turney, Computational Intelligence, 29 (3), 436-465, 2013.
--   Origin of Species Text: https://laurieximenez.files.wordpress.com/2019/04/the-origin-of-species_charles-darwin.pdf
+-   [Origin of Species Text](https://laurieximenez.files.wordpress.com/2019/04/the-origin-of-species_charles-darwin.pdf)
