@@ -10,6 +10,9 @@ categories: [code, analysis, music, spotify]
 image: "hs.jpg"
 ---
 
+### About
+spotifyr is an R wrapper for pulling track audio features and other information from Spotify's Web API in bulk. For more information on the package, I'd recommend taking a look at Charlie's [README.md](https://github.com/charlie86/spotifyr) for more details and examples.
+
 ### Load packages
 
 ```{r setup, message=FALSE}
@@ -21,10 +24,6 @@ library(ggridges)
 library(ggjoy)
 library(plotly) 
 ```
-
-### Background
-
-spotifyr is an R wrapper for pulling track audio features and other information from Spotify's Web API in bulk. For more information on the package, I'd recommend taking a look at Charlie's [README.md](https://github.com/charlie86/spotifyr) for more details and examples.
 
 ### Find My All Time Favorite Artists
 
@@ -79,16 +78,17 @@ labs(title = "Harry Style's track distribution on musical positiveness",
      subtitle = "Based on valence pulled from Spotify's Web API with spotifyr",
      y = "Valence",
      x = "Track Name") +
-  theme_minimal() +
   geom_text(aes(label = round(valence, digits = 3)), position=position_dodge(width=1.0), hjust= -0.30, size=3) +
-  scale_y_continuous(expand = c(0, 0), limits = c(0,1)) 
+  scale_y_continuous(expand = c(0, 0), limits = c(0,1))  +
+  theme_minimal(base_size = 12)
 
 ggplot(harry_styles, 
     aes(x = energy, y = album_name, fill = ..x..)) + 
-geom_density_ridges_gradient() + 
-  theme(legend.position = "none") +
+geom_density_ridges_gradient(show.legend = FALSE) + 
+   scale_fill_viridis_c(option = "C") + 
   labs(x = "Energy",
-       y = "Album Name")
+       y = "Album Name") +
+  theme_minimal(base_size = 16)
 ```
 
 ### Exploring Harry Style's discography on danceabiliy *vs.* valence (music positiveness)
