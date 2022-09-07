@@ -11,18 +11,23 @@ image: "hs.jpg"
 ---
 
 ### About
-spotifyr is an R wrapper for pulling track audio features and other information from Spotify's Web API in bulk. For more information on the package, I'd recommend taking a look at Charlie's [README.md](https://github.com/charlie86/spotifyr) for more details and examples.
+spotifyr is an R wrapper for pulling track audio features and other information from Spotify's Web API in bulk. For more information on the package, I'd recommend taking a look at Charlie's [README.md](https://github.com/charlie86/spotifyr) for more details and examples. This is another great [website](https://towardsdatascience.com/explore-your-activity-on-spotify-with-r-and-spotifyr-how-to-analyze-and-visualize-your-stream-dee41cb63526) from Saúl Buentello that explores the spotifyr package and instructions to download your own spotify data.
+
 
 ### Load packages
 
 ```{r setup, message=FALSE}
 library(tidyverse)
+library(here)
 library(spotifyr)
 library(purrr)
 library(knitr)
 library(ggridges)
 library(ggjoy)
 library(plotly) 
+library(jsonlite)
+library(lubridate)
+library(gghighlight)
 ```
 
 ### Find My All Time Favorite Artists
@@ -60,7 +65,7 @@ top_art_tracks_atm <- get_my_top_artists_or_tracks(type = 'tracks',
 
 ### What are the most joyful Harry Styles songs and albums ?
 
-```{r, warning=FALSE, message =FALSE}
+```{r, warning=FALSE, message = FALSE}
 harry_styles <- get_artist_audio_features('harry styles')
 
 harry_styles_joyful_songs <- harry_styles %>% 
@@ -116,3 +121,126 @@ layout(legend = list(orientation = "h",   # show entries horizontally
                      y = -0.15))  # adjust legend text so its not overlapping with x-axis        
 ```
 
+### Explore my downloaded spotify history
+- I downloaded my data at [https://www.spotify.com/us/account/privacy/](https://www.spotify.com/us/account/privacy/). After logging in, you can select “Download your data” and follow the steps to retrieve your data from your email. 
+
+![](download_spotify_data.jpg) 
+
+```{r,  warning=FALSE, message =FALSE}
+# Reading JSON and streaming history
+streamHistory0 <- fromJSON("StreamingHistory0.json", flatten = TRUE)
+streamHistory1 <- fromJSON("StreamingHistory1.json", flatten = TRUE)
+streamHistory2 <- fromJSON("StreamingHistory2.json", flatten = TRUE)
+streamHistory3 <- fromJSON("StreamingHistory3.json", flatten = TRUE)
+
+# Combine all histories 
+streamHistAll = rbind(streamHistory0, streamHistory1, streamHistory2, streamHistory3)
+```
+
+### code taken from: https://towardsdatascience.com/explore-your-activity-on-spotify-with-r-and-spotifyr-how-to-analyze-and-visualize-your-stream-dee41cb63526
+```{r,  warning=FALSE, message =FALSE}
+# Adding date and timing 
+mySpotify <- streamHistAll %>% 
+  as_tibble() %>% 
+  mutate_at("endTime", ymd_hm) %>% 
+  mutate(endTime = endTime - hours(6)) %>% 
+  mutate(date = floor_date(endTime, "day") %>% as_date, seconds = msPlayed / 1000, minutes = seconds / 60)
+
+# Playback activity per week and hours
+streamingHours <- mySpotify %>% 
+  filter(date >= "2020-01-01") %>% 
+  group_by(date) %>% 
+  group_by(date = floor_date(date, "week")) %>%
+  summarize(hours = sum(minutes) / 60) %>% 
+  arrange(date) %>% 
+  ggplot(aes(x = date, y = hours)) + 
+  geom_col(aes(fill = hours)) +
+  scale_fill_gradient(low = "yellow", high = "red") + 
+  labs(x= "Date", y= "Hours of music playback", fill = "Hours") + 
+  ggtitle("On what dates I've listened to more or less music on Spotify?", "Playback activity per week")+
+  theme_minimal() +
+  theme(legend.position="bottom")
+
+streamingHours
+```
+
+### On what dates did you listen to more or less music by a specific artist?
+```{r,  warning=FALSE, message =FALSE}
+# Playback activity for Harry Styles & Taylor Swift
+hoursArtist <- mySpotify %>% 
+  group_by(artistName, date = floor_date(date, "month")) %>% 
+  summarize(hours = sum(minutes) / 60) %>% 
+  ggplot(aes(x = date, y = hours, group = artistName)) + 
+  labs(x= "Date", y= "Hours of music playback") + 
+  ggtitle("On what dates I've listened to more or less music by a specific artist?", "E.g: Harry Styles and Taylor Swift") +
+  geom_line(aes(color = artistName)) + 
+  gghighlight(artistName == "Harry Styles" || artistName == "Taylor Swift") +
+  theme_minimal()
+
+hoursArtist
+```
+
+### What were the artists you listened to the most on your Spotify?
+```{r,  warning=FALSE, message =FALSE, fig.width=14, fig.height=10}
+# Most listened artist (more than 3 hours)
+minutesMostListened <- mySpotify %>% 
+  filter(date >= "2020-01-01") %>% 
+  group_by(artistName) %>% 
+  summarize(minutesListened = sum(minutes)) %>% 
+  filter(minutesListened >= 180) %>%
+  ggplot(aes(x = reorder(artistName, -minutesListened), y = minutesListened)) + 
+  geom_col(aes(fill = minutesListened)) +
+  scale_fill_gradient(low = "yellow", high = "red") + 
+  labs(x= "Artist", y= "Minutes of music playback", fill = "Minutes Listened") + 
+  theme_minimal(base_size = 18) +
+  ggtitle("What were the most listened artists on my Spotify?", "> 3 hours listened") +
+  theme(axis.text.x = element_text(angle = 90), 
+        legend.position = "none") 
+
+minutesMostListened
+```
+
+### Exploring my liked tracks
+```{r,warning=FALSE, message =FALSE}
+# Get favorite tracks from likes
+myFavTracks <- ceiling(get_my_saved_tracks(include_meta_info = TRUE)[['total']] / 50) %>%
+  seq() %>%
+  map(function(x) {
+    get_my_saved_tracks(limit = 50, offset = (x - 1) * 50)
+  }) %>% 
+  reduce(rbind) %>%
+  write_rds('raw_myFavTracks.rds')
+```
+
+### What my top artists based on my liked tracks?
+```{r,  warning=FALSE, message =FALSE}
+favTracksArtist <- myFavTracks %>%
+  select(track.artists) %>%
+  reduce(rbind) %>%
+  reduce(rbind) %>%
+  select(id, name)
+trackNumArtist <- favTracksArtist %>%
+  count(id, sort = TRUE) %>%
+  left_join(favTracksArtist, by = 'id',.) %>%
+  unique() %>%
+  select(-id) %>%
+  top_n(10, n)
+
+# Plot top 10 artists based on liked tracks 
+plotMyFavs <- trackNumArtist %>%
+  mutate(freq = case_when(n > 100 ~ '> 100 tracks',
+      between(n, 50, 99) ~ '50-99 tracks',
+      between(n, 20, 49) ~ '20-49 tracks',
+      TRUE ~ '< 20 tracks')) %>%
+  mutate(freq = factor(freq, levels = c('> 100 tracks', '50-99 tracks', '20-49 tracks', '< 20 tracks'))) %>%
+  ggplot(mapping = aes(x = reorder(name, -n), y = n, fill = freq)) +
+  geom_col() +
+  scale_fill_brewer(palette="Dark2") +
+  labs(x= "Artist name", y= "Number of tracks", fill = NULL) +
+  ggtitle("What are my Top 10 favorite artists?", "Based on my ♥ tracks") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90), 
+        legend.position="bottom")
+
+plotMyFavs
+```
