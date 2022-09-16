@@ -12,8 +12,6 @@ format:
 
 If you're passionate about research and interested in the prospects of graduate school, I would highly suggest conducting an internship at a national laboratory! I was a 2x Science Undergraduate Lab Intern at Lawrence Berkeley National Lab, having worked with different mentors for each internship. If you have any questions regarding the application process, the internship program or any other questions, send me a DM/LinkedIn message.
 
-![Spring 2020, Lawrence Berkeley National Laboratory Internship](images/lbnlintern.jpg)
-
 ### Links to internship programs:
 
 -   [Science Undergraduate Laboratory Internship (SULI), DOE](https://science.osti.gov/wdts/suli/)

@@ -51,9 +51,10 @@ top_art_tracks_long %>%
   kable()
 ```
 
-### Find my favorite tracks at the moment
 
-```{r, warning=FALSE, message =FALSE}
+
+```{r, warning=FALSE, message =FALSE, include = FALSE}
+### Find my favorite tracks at the moment
 top_art_tracks_atm <- get_my_top_artists_or_tracks(type = 'tracks', 
                              time_range = 'short_term', 
                              limit = 50) %>% 
@@ -70,22 +71,29 @@ harry_styles <- get_artist_audio_features('harry styles')
 
 harry_styles_joyful_songs <- harry_styles %>% 
     arrange(-valence) %>% 
-    select(.data$track_name, .data$valence) %>% 
-  head(20)
+    select(.data$track_name, .data$valence, .data$album_name) %>% 
+  head(20) 
 
 ggplot(
     harry_styles_joyful_songs, 
     aes(y = valence, x = reorder(track_name, valence))
     ) + 
-geom_col() +
+geom_col(aes(color = album_name, fill = album_name, width=.5)) +
+scale_color_manual(values=c("#25b6d5", "#b1bf46", "#813f2b"), name = "Album Name") +
+scale_fill_manual(values=c("#25b6d5", "#b1bf46", "#813f2b"), name = "Album Name") + 
   coord_flip() + 
-labs(title = "Harry Style's track distribution on musical positiveness", 
+labs(title = "Harry Styles track distribution on musical positiveness", 
      subtitle = "Based on valence pulled from Spotify's Web API with spotifyr",
      y = "Valence",
      x = "Track Name") +
   geom_text(aes(label = round(valence, digits = 3)), position=position_dodge(width=1.0), hjust= -0.30, size=3) +
   scale_y_continuous(expand = c(0, 0), limits = c(0,1))  +
-  theme_minimal(base_size = 12)
+  theme_minimal(base_size = 12) +
+  theme(axis.text.x=element_blank(),
+        axis.ticks.x = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.position = "top")
 
 ggplot(harry_styles, 
     aes(x = energy, y = album_name, fill = ..x..)) + 
@@ -93,7 +101,8 @@ geom_density_ridges_gradient(show.legend = FALSE) +
    scale_fill_viridis_c(option = "C") + 
   labs(x = "Energy",
        y = "Album Name") +
-  theme_minimal(base_size = 16)
+  theme_minimal(base_size = 16) +
+  theme(panel.grid.major.y = element_blank())
 ```
 
 ### Exploring Harry Style's discography on danceabiliy *vs.* valence (music positiveness)
