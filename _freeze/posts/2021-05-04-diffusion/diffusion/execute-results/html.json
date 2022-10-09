@@ -1,0 +1,16 @@
+{
+  "hash": "fd9294019cfab843657f9cb1102fd1df",
+  "result": {
+    "markdown": "---\ntitle: \"Dimentional Diffusion\"\ndescription: |\n  Modeling dimentional diffusion using parameters such as initial concentration, area of cross section of container, diffusivity, etc.\nauthor:\n  - name: Elmera Azadpour\ndate: 2021-05-04\nformat: html\ncategories: [code, analysis, modeling, diffusion]\nimage: \"diffusion.png\"\n---\n\n\n### To access .qmd script :\n\n-   the diffusion R script can be found in the folder of [this repo]()\n\n## Load packages\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(deSolve)\nlibrary(here)\n```\n:::\n\n\n## R implementation\n\n\n::: {.cell}\n\n```{.r .cell-code}\nsource(here(\"posts/2021-05-04-diffusion/R\",\"diffusion.R\"))\n\n# run our diffusion model (iterative difference equation) with initial concentration of 10, for 8 timestep (size 1m), and 10 space steps (size 1s)\n# using diffusion parameters 0.5 s/m2, 10 m2\nresult = diff1(initialC=10, nx=10, dx=1, nt=8, dt=1, D=0.5, area=10)\n\n# a list is returned with our 3 data frames for concentration (conc), qin and qout\n# result\n\n# used filled contour to plot results\n# head(result$conc)\nfilled.contour(result$conc, xlab=\"Time\", ylab=\"Distance\")\n```\n\n::: {.cell-output-display}\n![](diffusion_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n\n```{.r .cell-code}\n# or if you prefer this orientation (Distance on x axis)\nfilled.contour(t(result$conc), ylab=\"Time\", xlab=\"Distance\")\n```\n\n::: {.cell-output-display}\n![](diffusion_files/figure-html/unnamed-chunk-1-2.png){width=672}\n:::\n:::\n\n\n## Change parameters (diffusivity D, and space and time steps (dx, dt))\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# changes diffusivity and other parameters particularly\n# diffusivity, dx and dt\nres=diff1(initialC=10,nx=5,dx=25,nt=20,dt=20,D=0.75,area=10) \n\nfilled.contour(res$conc, xlab=\"Time (fraction of hour)\",ylab=\"Distance Along Path (m)\", main=\"Pollutant Diffusion\")\n```\n\n::: {.cell-output-display}\n![](diffusion_files/figure-html/unnamed-chunk-2-1.png){width=672}\n:::\n\n```{.r .cell-code}\n# we can also see how much material moved from place to place each time step\nfilled.contour(res$qin, xlab=\"Time (fraction of hour)\",ylab=\"Distance Along Path (m)\", main = \"Qin\")\n```\n\n::: {.cell-output-display}\n![](diffusion_files/figure-html/unnamed-chunk-2-2.png){width=672}\n:::\n:::\n\n\n## Summary\n we can see an overall increase in  total simulation time (nt * dt) which lead to an increase in the pollutant over time and space. However, decreasing the number of discrete segments (m) lead to greater distance of the pollutant along the path. \n\n",
+    "supporting": [
+      "diffusion_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
