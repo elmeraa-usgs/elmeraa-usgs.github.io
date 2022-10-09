@@ -133,6 +133,41 @@
     "text": "Load Packages\n\nlibrary(tidyverse)\n\n── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──\n✔ ggplot2 3.3.6     ✔ purrr   0.3.4\n✔ tibble  3.1.8     ✔ dplyr   1.0.9\n✔ tidyr   1.2.0     ✔ stringr 1.4.0\n✔ readr   2.1.2     ✔ forcats 0.5.1\n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\n\nlibrary(here)\n\nhere() starts at /Users/elmeraa/Desktop/elmera/elmera\n\nlibrary(janitor)\n\n\nAttaching package: 'janitor'\n\nThe following objects are masked from 'package:stats':\n\n    chisq.test, fisher.test\n\nlibrary(sf)\n\nLinking to GEOS 3.10.2, GDAL 3.4.2, PROJ 8.2.1; sf_use_s2() is TRUE\n\nlibrary(raster)\n\nLoading required package: sp\n\nAttaching package: 'raster'\n\nThe following object is masked from 'package:dplyr':\n\n    select\n\nlibrary(fasterize)\n\n\nAttaching package: 'fasterize'\n\nThe following object is masked from 'package:graphics':\n\n    plot\n\nThe following object is masked from 'package:base':\n\n    plot\n\nlibrary(rnaturalearth)\nlibrary(rnaturalearthdata)\nlibrary(rgeos)\n\nrgeos version: 0.5-9, (SVN revision 684)\n GEOS runtime version: 3.10.2-CAPI-1.16.0 \n Please note that rgeos will be retired by the end of 2023,\nplan transition to sf functions using GEOS at your earliest convenience.\n GEOS using OverlayNG\n Linking to sp version: 1.4-7 \n Polygon checking: TRUE \n\n\n\n\nRead in data and stack files\n\ncetacean <-  list.files(here(\"posts\", \"2021-03-07-cetacean-richness\",\"ca_cetaceans\"), full.names = TRUE)\ncetacean_raster <- stack(cetacean)\ncetacean_raster\n\nclass      : RasterStack \ndimensions : 12, 20, 240, 35  (nrow, ncol, ncell, nlayers)\nresolution : 0.5, 0.5  (x, y)\nextent     : -125, -115, 32, 38  (xmin, xmax, ymin, ymax)\ncrs        : +proj=longlat +datum=WGS84 +no_defs \nnames      : Balaenoptera_acutorostrata, Balaenoptera_borealis, Balaenoptera_brydei, Balaenoptera_edeni, Balaenoptera_musculus, Balaenoptera_physalus, Berardius_bairdii, Delphinus_capensis, Delphinus_delphis, Eschrichtius_robustus, Eubalaena_japonica, Globicephala_macrorhynchus, Grampus_griseus, Indopacetus_pacificus, Kogia_breviceps, ... \nmin values :                       0.11,                  0.02,                0.03,               0.03,                  0.01,                  0.06,              0.01,               0.03,              0.03,                  0.11,               0.59,                       0.02,            0.03,                  0.01,            0.03, ... \nmax values :                       1.00,                  1.00,                1.00,               1.00,                  1.00,                  1.00,              1.00,               0.63,              1.00,                  1.00,               1.00,                       1.00,            1.00,                  0.47,            1.00, ... \n\nplot(cetacean_raster)\n\n\n\n\n\n\nApply probability threshold (of 0.6 or greater) to determine presence or non-presence\n\naquamap_fun <- function(x, thresh = 0.6){\n  y <- ifelse(x >= thresh, 1, 0)\n  return(y)\n}\n\naquamap <- calc(cetacean_raster, fun = aquamap_fun)\nspecies_richness1 <- calc(aquamap, fun = sum, na.rm = TRUE)\nplot(species_richness1)\n\n\n\n\n\n\nConverting to dataframe and plotting\n\naquamap_df <- raster::rasterToPoints(species_richness1) %>% \n  as.data.frame()\n\nstates110 <- ne_download(scale = 110, type = 'states', category = 'cultural', returnclass = \"sf\") %>% filter(name %in% c(\"California\"))\n\nWarning in check_data_exist(scale = scale, category = category, type = type):\nyour combination of type, category, scale seem not to exist in the list of\nNatural Earth data so you may get a download fail message. Check ?ne_download or\nhttp://www.naturalearthdata.com/features/ to see data availability.\n\nWarning in check_data_exist(scale = scale, category = category, type = type):\nyour combination of type, category, scale seem not to exist in the list of\nNatural Earth data so you may get a download fail message. Check ?ne_download or\nhttp://www.naturalearthdata.com/features/ to see data availability.\n\n\nOGR data source with driver: ESRI Shapefile \nSource: \"/private/var/folders/r0/gbtncpg92w3chydzw5fw5bnr0000gn/T/Rtmp0dFxl2\", layer: \"ne_110m_admin_1_states_provinces_lakes\"\nwith 51 features\nIt has 121 fields\nInteger64 fields read as strings:  ne_id \n\nggplot() +\ngeom_raster(data = aquamap_df, aes(x=x,y=y, fill = layer)) +\n  geom_sf(data = states110) +\n  scale_fill_gradient2(low = \"red\", mid = \"white\", high = \"blue\") +\n  labs(x = \"Longitude\", y = \"Latitude\", title = \"Species Richness of Cetaceans along Coastal California\", fill = \"Number of Cetacean Species\") +\n  theme_classic()\n\n\n\n\nFig. 1 Species Richness of 16 Cetacean Species along the Coast of California. Presence of Cetacean species was determined with with a probability threshold of 0.6 or greater.\n\n\n\n\n\n\nCitation:\n\nKaschner, K., Rius-Barile, J., Kesner-Reyes, K., Garilao, C., Kullander, S., Rees, T., & Froese, R. (2016). AquaMaps: Predicted range maps for aquatic species. www.aquamaps.org"
   },
   {
+    "objectID": "posts/2021-05-04-diffusion/diffusion.html",
+    "href": "posts/2021-05-04-diffusion/diffusion.html",
+    "title": "Dimentional Diffusion",
+    "section": "",
+    "text": "the diffusion R script can be found in the folder of this repo"
+  },
+  {
+    "objectID": "posts/2021-05-04-diffusion/diffusion.html#load-packages",
+    "href": "posts/2021-05-04-diffusion/diffusion.html#load-packages",
+    "title": "Dimentional Diffusion",
+    "section": "Load packages",
+    "text": "Load packages\n\nlibrary(tidyverse)\nlibrary(deSolve)\nlibrary(here)"
+  },
+  {
+    "objectID": "posts/2021-05-04-diffusion/diffusion.html#r-implementation",
+    "href": "posts/2021-05-04-diffusion/diffusion.html#r-implementation",
+    "title": "Dimentional Diffusion",
+    "section": "R implementation",
+    "text": "R implementation\n\nsource(here(\"posts/2021-05-04-diffusion/R\",\"diffusion.R\"))\n\n# run our diffusion model (iterative difference equation) with initial concentration of 10, for 8 timestep (size 1m), and 10 space steps (size 1s)\n# using diffusion parameters 0.5 s/m2, 10 m2\nresult = diff1(initialC=10, nx=10, dx=1, nt=8, dt=1, D=0.5, area=10)\n\n# a list is returned with our 3 data frames for concentration (conc), qin and qout\n# result\n\n# used filled contour to plot results\n# head(result$conc)\nfilled.contour(result$conc, xlab=\"Time\", ylab=\"Distance\")\n\n\n\n# or if you prefer this orientation (Distance on x axis)\nfilled.contour(t(result$conc), ylab=\"Time\", xlab=\"Distance\")"
+  },
+  {
+    "objectID": "posts/2021-05-04-diffusion/diffusion.html#change-parameters-diffusivity-d-and-space-and-time-steps-dx-dt",
+    "href": "posts/2021-05-04-diffusion/diffusion.html#change-parameters-diffusivity-d-and-space-and-time-steps-dx-dt",
+    "title": "Dimentional Diffusion",
+    "section": "Change parameters (diffusivity D, and space and time steps (dx, dt))",
+    "text": "Change parameters (diffusivity D, and space and time steps (dx, dt))\n\n# changes diffusivity and other parameters particularly\n# diffusivity, dx and dt\nres=diff1(initialC=10,nx=5,dx=25,nt=20,dt=20,D=0.75,area=10) \n\nfilled.contour(res$conc, xlab=\"Time (fraction of hour)\",ylab=\"Distance Along Path (m)\", main=\"Pollutant Diffusion\")\n\n\n\n# we can also see how much material moved from place to place each time step\nfilled.contour(res$qin, xlab=\"Time (fraction of hour)\",ylab=\"Distance Along Path (m)\", main = \"Qin\")"
+  },
+  {
+    "objectID": "posts/2021-05-04-diffusion/diffusion.html#summary",
+    "href": "posts/2021-05-04-diffusion/diffusion.html#summary",
+    "title": "Dimentional Diffusion",
+    "section": "Summary",
+    "text": "Summary\nwe can see an overall increase in total simulation time (nt * dt) which lead to an increase in the pollutant over time and space. However, decreasing the number of discrete segments (m) lead to greater distance of the pollutant along the path."
+  },
+  {
     "objectID": "posts/2021-03-07-hierarchical-clustering/hierarchical-clustering.html",
     "href": "posts/2021-03-07-hierarchical-clustering/hierarchical-clustering.html",
     "title": "Hierarchical Clustering",

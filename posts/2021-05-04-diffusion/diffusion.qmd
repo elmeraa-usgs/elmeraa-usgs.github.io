@@ -12,7 +12,7 @@ image: "diffusion.png"
 
 ### To access .qmd script :
 
--   the diffusion R script can be found in the folder of [this repo]()
+-   the diffusion R script can be found in the folder of [this repo](https://github.com/elmeraa/elmeraa.github.io/tree/main/posts/2021-05-04-diffusion)
 
 ## Load packages
 
