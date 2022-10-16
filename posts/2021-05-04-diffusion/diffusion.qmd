@@ -12,7 +12,7 @@ image: "diffusion.png"
 
 ### To access .qmd script :
 
--   the diffusion R script can be found in the folder of [this repo](https://github.com/elmeraa/elmeraa.github.io/tree/main/posts/2021-05-04-diffusion)
+-   the diffusion R script can be found in the folder of [this repo](https://github.com/elmeraa/elmeraa.github.io/tree/main/posts/2021-05-04-diffusion/R)
 
 ## Load packages
 
@@ -57,5 +57,5 @@ filled.contour(res$qin, xlab="Time (fraction of hour)",ylab="Distance Along Path
 ```
 
 ## Summary
-We can see an overall increase in  total simulation time (nt * dt) which lead to an increase in the pollutant over time and space. However, decreasing the number of discrete segments (m) lead to greater distance of the pollutant along the path. 
 
+We can see an overall increase in total simulation time (nt \* dt) which lead to an increase in the pollutant over time and space. However, decreasing the number of discrete segments (m) lead to greater distance of the pollutant along the path.
