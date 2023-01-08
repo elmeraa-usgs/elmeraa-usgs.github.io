@@ -17,7 +17,7 @@ about:
       href: https://www.linkedin.com/in/elmera-azadpour-470b9a132/
     - icon: github
       text: Github
-      href: https://github.com/elmeraa
+      href: https://github.com/elmeraa-usgs 
 ---
 
 
@@ -30,6 +30,3 @@ I obtained a Masters of Environmental Science and Management degree from the Bre
 Broadly, my interests include climate-ecosystem interactions, urban ecology, terrestrial land surface modeling, ecohydrology, global carbon cycling and geophysical science. I am also passionate about environmental/climate justice, BIPOC representation in STEM, and creating open & reproducible data products. 
 
 </div>
-
-
-
