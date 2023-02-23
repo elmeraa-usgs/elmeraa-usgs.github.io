@@ -8,7 +8,7 @@ website:
       left: "Copyright 2022, Elmera Azadpour" 
       right: 
         - icon: github
-          href: https://github.com/elmeraa
+          href: https://github.com/elmeraa-usgs
         - icon: twitter 
           href: https://twitter.com/EAzadpour
   title: "Elmera Azadpour"
@@ -27,7 +27,7 @@ website:
       - text: CV
         href: pdfs/Azadpour_Elmera_CV_Sep22.pdf        
       - icon: github
-        href: https://github.com/elmeraa
+        href: https://github.com/elmeraa-usgs
       - icon: twitter
         href: https://twitter.com/EAzadpour
   cookie-consent:
