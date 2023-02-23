@@ -20,6 +20,8 @@ website:
         href: Research.qmd
       - text: Resources
         href: Resources.qmd
+      - text: R
+        href: R_Resources.qmd
       - text: Blog
         href: blog.qmd
       - text: CV

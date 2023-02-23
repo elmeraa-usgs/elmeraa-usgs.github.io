@@ -8,11 +8,11 @@ format:
     monobackgroundcolor: '#C8EEDF' 
 ---
 
-### Undergraduates/Post Bachelors:
+## Undergraduates/Post Bachelors:
 
-If you're passionate about research and interested in the prospects of graduate school, I would highly suggest conducting an internship at a national laboratory! I was a 2x Science Undergraduate Lab Intern at Lawrence Berkeley National Lab, having worked with different mentors for each internship. Additionally, if you're interested in a masters program, I'm happy to chat about my experience applying to and attending the Bren School. If you have any other questions or would like to set up a time to chat, send me a Twitter DM or LinkedIn message! 
+If you're passionate about research and interested in the prospects of graduate school, I would highly suggest conducting an internship at a national laboratory! I was a 2x Science Undergraduate Lab Intern at Lawrence Berkeley National Lab, having worked with different mentors for each internship. Additionally, if you're interested in a masters program, I'm happy to chat about my experience applying to and attending the Bren School. If you have any other questions or would like to set up a time to chat, send me a Twitter DM or LinkedIn message!
 
-### Links to internship programs:
+## Links to internship programs:
 
 -   [Science Undergraduate Laboratory Internship (SULI), DOE](https://science.osti.gov/wdts/suli/)
 -   [Community College Internships (CCI) Program, DOE](https://science.osti.gov/wdts/cci)
@@ -20,16 +20,16 @@ If you're passionate about research and interested in the prospects of graduate 
 -   [Summer Scholars Internship Program, NSF](https://www.nsf.gov/od/oia/activities/interns/)
 -   [Additional Internship Programs for NOAA, EPA, NIH, etc](https://stemundergrads.science.gov/)
 -   [Environmental Science Internships (Policy/Private/Federal)](https://www.environmentalscience.org/internships)
-- [USAjobs.gov](https://www.usajobs.gov/)
-    - Use the Keywords to your advantage: "Ecology," "Environmental," "Policy," "Energy," "Conservation," "Data science," or whatever field you're interested in to work in your advantage! 
-    - Applying filters such as "Students" and "Recent graduates" is a great way to quickly find internships or Student Trainee positions.
-    ![](images/USAjobs-filters.jpg)
-        
-    - You can filter your search even more by specifying location and department/agency.
-    ![](images/USAjobs-location-dept-agency.jpg)
-    
+-   [USAjobs.gov](https://www.usajobs.gov/)
+    -   Use the Keywords to your advantage: "Ecology," "Environmental," "Policy," "Energy," "Conservation," "Data science," or whatever field you're interested in to quickly find relevant jobs.
 
-### Helpful NSF GRFP Resources:
+    -   Additionally, applying filters such as "Students" and "Recent graduates" is a great way to quickly find internships or student trainee positions. ![](images/USAjobs-filters.jpg)
+
+    -   You can filter your search even more by specifying location and department/agency. ![](images/USAjobs-location-dept-agency.jpg)
+
+## Helpful grad school material:
+
+### NSF GRFP Resources:
 
 -   [What is the GRFP, when do I apply?](https://underthecblog.org/2017/10/03/resources-and-tips-for-the-nsf-grfp/)
 -   [NSF Application Eligibility](https://www.nsfgrfp.org/applicants/applicant-eligibility/)
@@ -38,11 +38,11 @@ If you're passionate about research and interested in the prospects of graduate 
 -   [Tips and essay examples](https://jef.works/blog/2017/10/15/NSF-GRFP-application-tips-and-example/)
 -   [Breakdown of GRFP and example essays](https://www.megaphage.com/single-post/NSF)
 
-### Helpful GRE Resources:
+### GRE Resources:
 
 -   [Manhattan Prep GRE offers 47 free helpful videos](https://www.youtube.com/watch?v=s3HQKc8pqHQ&list=PLYZACiD6j3VsFlDR68gbF9CK9gZedcPbY)
--   [Kaplan GRE Test Prep 2022](https://www.barnesandnoble.com/w/gre-prep-plus-2022-kaplan-test-prep/1137938176)
--   [Princeton Review GRE Prep 2022](https://www.barnesandnoble.com/w/princeton-review-gre-prep-2022-the-princeton-review/1138803065?ean=9780525570486)
--   [Princeton Review Crash Course for the GRE, 6th edition (great for last-minute studying)](https://www.barnesandnoble.com/w/crash-course-for-the-gre-6th-edition-the-princeton-review/1131086432?ean=9780451487841)
+-   [Kaplan GRE Test Prep 2022](https://www.barnesandnoble.com/w/gre-prep-plus-2023-includes-6-practice-tests-1500-practice-questions-online-access-to-a-500-question-bank-and-video-tutorials-kaplan-test-prep/1142526871?ean=9781506282039)
+-   [Princeton Review GRE Prep 2023](https://www.barnesandnoble.com/w/gre-prep-plus-2023-includes-6-practice-tests-1500-practice-questions-online-access-to-a-500-question-bank-and-video-tutorials-kaplan-test-prep/1142526871?ean=9781506282039)
+-   [Princeton Review Crash Course for the GRE (great for last-minute studying)](https://www.barnesandnoble.com/w/crash-course-for-the-gre-6th-edition-the-princeton-review/1131086432?ean=9780451487841)
 -   [Comprehensive Study Guide](https://www.discoverbusiness.us/resources/gre/#2)
 -   [Quizlet Flashcards](https://quizlet.com/subject/gre/)

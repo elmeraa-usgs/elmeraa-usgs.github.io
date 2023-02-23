@@ -1,0 +1,51 @@
+---
+title: "R Resources"
+format:
+  html: 
+    fontsize: 1.3em
+    linestretch: 1.8
+    linkcolor: '#117864'
+    monobackgroundcolor: '#C8EEDF' 
+---
+
+Interested in resources to help you get started coding in R? Below are some great places to start ⬇️
+
+1)  Free Book: [R for Data Science](https://r4ds.had.co.nz/index.html) by Hadley Wickham & Garrett Grolemund
+
+This book gives you an introduction to the word of `tidyverse`, provides examples on how to build a `ggplot` visualization, how to wrangle data, build models, and more.
+
+2)  [`learnr`](https://rstudio.github.io/learnr/)
+
+This resource is an interactive way to get hands on practice with R code by providing code exercies and supplemental videos as well.
+
+3)  [Geocomputation with R](https://geocompr.robinlovelace.net/index.html) by Robin Lovelace, Jakub Nowosad, Jannes Muenchow
+
+This book provides an introduction to widley used geospatial packages in R such as `sf` and `terra`. Here they cover material on geospatial operations, coordinate reference systems (CRSs), making maps in R, and more.
+
+4)  [Cheatsheets!](https://posit.co/resources/cheatsheets/)
+
+Sometimes you just need a quick look to find what function you're looking to apply. The link above includes cheatsheets for packages such as `dplyr`, `ggplot`, `stringr` and more.
+
+5)  [Quarto](https://quarto.org/)
+
+Quarto is an open-source scientific and technical publishing system built on [Pandoc](https://pandoc.org/) and can be a great tool for creating high-quality articles, reports, presentations, websites, blogs, and books in HTML, PDF, MS Word, ePub, and more. I recommend checking out Tom Moc's ["Welcome to Quarto Workshop"](https://www.youtube.com/watch?v=yvi5uXQMvu4) as a place to start. Mine Çetinkaya-Rundel & Julia Stewart Lowndes's presentation ["Hello Quarto"](https://www.youtube.com/watch?v=p7Hxu4coDl8&t=151s) is another great resource.
+
+### Community's of practice
+
+Below are some resources that are great for asking questions, getting connected, and building a network of diverse R users!
+
+1)  R-Ladies
+
+R-Ladies is a worldwide organization whose mission is to promote gender diversity in the R community. It's likely that your community already has a group for you to get connected with. Here are some to name a few: [\@RLadiesSB](https://twitter.com/RLadiesSB), [\@RLadiesSF,](https://twitter.com/RLadiesSF) [\@RLadiesNYC](https://twitter.com/RLadiesNYC), [\@RLadiesParis](https://twitter.com/RLadiesParis).
+
+2) R User Groups
+
+Many of these groups below have public slack groups for folks to join and ask code questions, network, and even hear about job postings. 
+
+-  [Data Visualization Society](https://jobs.datavisualizationsociety.org/)
+
+- [R4DS](https://rfordatascience.slack.com/join/shared_invite/zt-1p6704s1i-1ihdFzQ6AR2ynsX9ZrSDjw#/shared-invite/email)
+
+- [Minorities in R (MiR) Community](https://mircommunity.com/about/)
+
+- [EcoDataScience](https://ecodatascience.slack.com/join/shared_invite/enQtNTE1MjAxMTU2NjQwLTZmYjQ5OGIyNjM0YTM4ZDhiMTA2Njc1Mjg2YjFlYWEwZDhlNjJmMTE3MzI2ZmM4ZTJhYTczNmZhYjk3YTI5NjU#/shared-invite/email)

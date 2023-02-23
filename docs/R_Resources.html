@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Elmera Azadpour</title>
+<title>Elmera Azadpour - R Resources</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,7 @@ ul.task-list{list-style: none;}
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
@@ -83,7 +84,6 @@ cookieconsent.run({
   
 
 
-<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-fixed fullcontent">
@@ -101,7 +101,7 @@ cookieconsent.run({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page">About</a>
+    <a class="nav-link" href="./index.html">About</a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./Research.html">Research</a>
@@ -110,7 +110,7 @@ cookieconsent.run({
     <a class="nav-link" href="./Resources.html">Resources</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./R_Resources.html">R</a>
+    <a class="nav-link active" href="./R_Resources.html" aria-current="page">R</a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./blog.html">Blog</a>
@@ -143,41 +143,67 @@ cookieconsent.run({
 <!-- margin-sidebar -->
     
 <!-- main -->
-<div class="quarto-about-jolla">
-  <img src="images/Elmera_headshot.jpg" class="about-image
-  round " style="height: 15em; width: 15em;">
- <header id="title-block-header" class="quarto-title-block default">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Elmera Azadpour</h1>
+<h1 class="title">R Resources</h1>
 </div>
+
+
+
 <div class="quarto-title-meta">
+
+    
+    
   </div>
-</header><main class="content" id="quarto-document-content">
-<div style="text-align: left">
-<p>Howdy! I am a Data Scientist/Data Visualization Specialist with United States Geological Survey (USGS) in the Water Mission Area (WMA). My work involves contributing to individual projects by applying reproducible workflows and data visualization techniques to capture and communicate complex data-intensive concepts to non-technical audiences using a variety of media (such as print, web, research products).</p>
-<p>I obtained a Masters of Environmental Science and Management degree from the Bren School at UC, Santa Barbara. During my Masters, I worked as an Arnhold Graduate Fellow utilizing remote sensing and projected land use data sets to track changes in land use relating to agricultural abandonment in the U.S. I obtained a Honors Bachelor of Science in Environmental Biology from the University of Utah. My thesis examined the effects of inorganic vs organic fertilizer on an urban lawn in Salt Lake City, Utah. During undergrad, I also completed two internships at Lawrence Berkeley National Lab where I conducted research analyzing the effects of rainfall gradients on future gross primary productivity across the Isthmus of Panama.</p>
-<p>Broadly, my interests include climate-ecosystem interactions, urban ecology, terrestrial land surface modeling, ecohydrology, global carbon cycling and geophysical science. I am also passionate about environmental/climate justice, BIPOC representation in STEM, and creating open &amp; reproducible data products. Check out some of my recent projects: <a href="https://www.usgs.gov/media/videos/us-river-conditions-july-september-2022">U.S. River Conditions Animation</a> &amp; <a href="https://twitter.com/USGS_DataSci/status/1611415629768298496">U.S Streamflow Conditions</a>!</p>
-</div>
+  
+
+</header>
+
+<p>Interested in resources to help you get started coding in R? Below are some great places to start ⬇️</p>
+<ol type="1">
+<li>Free Book: <a href="https://r4ds.had.co.nz/index.html">R for Data Science</a> by Hadley Wickham &amp; Garrett Grolemund</li>
+</ol>
+<p>This book gives you an introduction to the word of <code>tidyverse</code>, provides examples on how to build a <code>ggplot</code> visualization, how to wrangle data, build models, and more.</p>
+<ol start="2" type="1">
+<li><a href="https://rstudio.github.io/learnr/"><code>learnr</code></a></li>
+</ol>
+<p>This resource is an interactive way to get hands on practice with R code by providing code exercies and supplemental videos as well.</p>
+<ol start="3" type="1">
+<li><a href="https://geocompr.robinlovelace.net/index.html">Geocomputation with R</a> by Robin Lovelace, Jakub Nowosad, Jannes Muenchow</li>
+</ol>
+<p>This book provides an introduction to widley used geospatial packages in R such as <code>sf</code> and <code>terra</code>. Here they cover material on geospatial operations, coordinate reference systems (CRSs), making maps in R, and more.</p>
+<ol start="4" type="1">
+<li><a href="https://posit.co/resources/cheatsheets/">Cheatsheets!</a></li>
+</ol>
+<p>Sometimes you just need a quick look to find what function you’re looking to apply. The link above includes cheatsheets for packages such as <code>dplyr</code>, <code>ggplot</code>, <code>stringr</code> and more.</p>
+<ol start="5" type="1">
+<li><a href="https://quarto.org/">Quarto</a></li>
+</ol>
+<p>Quarto is an open-source scientific and technical publishing system built on <a href="https://pandoc.org/">Pandoc</a> and can be a great tool for creating high-quality articles, reports, presentations, websites, blogs, and books in HTML, PDF, MS Word, ePub, and more. I recommend checking out Tom Moc’s <a href="https://www.youtube.com/watch?v=yvi5uXQMvu4">“Welcome to Quarto Workshop”</a> as a place to start. Mine Çetinkaya-Rundel &amp; Julia Stewart Lowndes’s presentation <a href="https://www.youtube.com/watch?v=p7Hxu4coDl8&amp;t=151s">“Hello Quarto”</a> is another great resource.</p>
+<section id="communitys-of-practice" class="level3">
+<h3 class="anchored" data-anchor-id="communitys-of-practice">Community’s of practice</h3>
+<p>Below are some resources that are great for asking questions, getting connected, and building a network of diverse R users!</p>
+<ol type="1">
+<li>R-Ladies</li>
+</ol>
+<p>R-Ladies is a worldwide organization whose mission is to promote gender diversity in the R community. It’s likely that your community already has a group for you to get connected with. Here are some to name a few: <a href="https://twitter.com/RLadiesSB">@RLadiesSB</a>, <a href="https://twitter.com/RLadiesSF">@RLadiesSF,</a> <a href="https://twitter.com/RLadiesNYC">@RLadiesNYC</a>, <a href="https://twitter.com/RLadiesParis">@RLadiesParis</a>.</p>
+<ol start="2" type="1">
+<li>R User Groups</li>
+</ol>
+<p>Many of these groups below have public slack groups for folks to join and ask code questions, network, and even hear about job postings.</p>
+<ul>
+<li><p><a href="https://jobs.datavisualizationsociety.org/">Data Visualization Society</a></p></li>
+<li><p><a href="https://rfordatascience.slack.com/join/shared_invite/zt-1p6704s1i-1ihdFzQ6AR2ynsX9ZrSDjw#/shared-invite/email">R4DS</a></p></li>
+<li><p><a href="https://mircommunity.com/about/">Minorities in R (MiR) Community</a></p></li>
+<li><p><a href="https://ecodatascience.slack.com/join/shared_invite/enQtNTE1MjAxMTU2NjQwLTZmYjQ5OGIyNjM0YTM4ZDhiMTA2Njc1Mjg2YjFlYWEwZDhlNjJmMTE3MzI2ZmM4ZTJhYTczNmZhYjk3YTI5NjU#/shared-invite/email">EcoDataScience</a></p></li>
+</ul>
 
 
-</main> 
-  <hr class="about-sep">
-   <div class="about-links">
-  <a href="https://twitter.com/EAzadpour" class="about-link">
-    <i class="bi bi-twitter"></i>
-     <span class="about-link-text">Twitter</span>
-  </a>
-  <a href="https://www.linkedin.com/in/elmera-azadpour-470b9a132/" class="about-link">
-    <i class="bi bi-linkedin"></i>
-     <span class="about-link-text">LinkedIn</span>
-  </a>
-  <a href="https://github.com/elmeraa-usgs" class="about-link">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">Github</span>
-  </a>
-</div>
-</div>
- <!-- /main -->
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -301,6 +327,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (hasAlternateSentinel()) {
     toggleColorMode(true);
   } 
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const clipboard = new window.ClipboardJS('.code-copy-button', {
     target: function(trigger) {
       return trigger.previousElementSibling;
