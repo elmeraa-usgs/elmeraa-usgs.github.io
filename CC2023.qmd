@@ -1,0 +1,39 @@
+---
+title: "#30DayChartChallenge"
+format:
+  html: 
+    fontsize: 1.3em
+    linestretch: 1.8
+    linkcolor: '#117864'
+    monobackgroundcolor: '#C8EEDF' 
+---
+
+## What is the [#30DayChartChallenge?](https://30daychartchallenge.org/about/)
+
+As stated on the site, "The #30DayChartChallenge is a community-driven challenge that happens each year during April. Every day, there is a certain prompt, grouped into five categories: comparisons, distributions, relationships, time series, and uncertainties. Anyone is welcome to contribute, no matter which data source or tool is used to create the visualizations." More info on code of conduct from creators [here](https://30daychartchallenge.org/about/).
+
+Prompts for this years challenge can be seen below ⬇️
+
+{{< tweet user=30DayChartChall id=1632767770239664134 >}}
+
+April 2023 was my first go at the challenge and I found the overall experience to be really inspiring and creative! Below are my 5️⃣ contributions. In the near future, you'll find code links to my #DataViz made during the Chart Challenge (along with other contributors!) [\@USGSData_Sci](https://twitter.com/USGS_DataSci).
+
+## Day 2: Waffle
+
+{{< tweet user=USGS_DataSci id=1642512475722481676 >}}
+
+## Day 4: Historical
+
+{{< tweet user=USGS_DataSci id=1643383570965184514 >}}
+
+## Day 13: Pop Culture
+
+{{< tweet user=USGS_DataSci id=1646632643562475520 >}}
+
+## Day 14: New Tool
+
+{{< tweet user=USGS_DataSci id=1646967370483920896 >}}
+
+## Day 28: Trend
+
+{{< tweet user=USGS_DataSci id=1652053353634107397 >}}

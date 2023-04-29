@@ -308,6 +308,48 @@
     "text": "Summary:\n\nThe analysis indicates mean temperature of driest quarter and mean temperature of warmest quarter are strongly positively correlated in multivariate space.\nPrecipitation of warmest quarter is minimally correlated with elevation.\nLastly, elevation is negatively correlated to mean temperature of driest quarter, mean temperature of warmest quarter, and precipitation of coldest quarter.\nPCA analysis also indicates, overall, in multivariate space, countries Rwanda and Burundi are very similar – as well as, countries such as Peru and Bolivia."
   },
   {
+    "objectID": "CC2023.html",
+    "href": "CC2023.html",
+    "title": "#30DayChartChallenge",
+    "section": "",
+    "text": "As stated on the site, “The #30DayChartChallenge is a community-driven challenge that happens each year during April. Every day, there is a certain prompt, grouped into five categories: comparisons, distributions, relationships, time series, and uncertainties. Anyone is welcome to contribute, no matter which data source or tool is used to create the visualizations.” More info on code of conduct from creators here.\nPrompts for this years challenge can be seen below ⬇️\n\nApril 2023 was my first go at the challenge and I found the overall experience to be really inspiring and creative! Below are my 5️⃣ contributions. In the near future, you’ll find code links to my #DataViz made during the Chart Challenge (along with other contributors!) @USGSData_Sci."
+  },
+  {
+    "objectID": "CC2023.html#day-2-waffle",
+    "href": "CC2023.html#day-2-waffle",
+    "title": "#30DayChartChallenge",
+    "section": "Day 2: Waffle",
+    "text": "Day 2: Waffle"
+  },
+  {
+    "objectID": "CC2023.html#day-4-historical",
+    "href": "CC2023.html#day-4-historical",
+    "title": "#30DayChartChallenge",
+    "section": "Day 4: Historical",
+    "text": "Day 4: Historical"
+  },
+  {
+    "objectID": "CC2023.html#day-13-pop-culture",
+    "href": "CC2023.html#day-13-pop-culture",
+    "title": "#30DayChartChallenge",
+    "section": "Day 13: Pop Culture",
+    "text": "Day 13: Pop Culture"
+  },
+  {
+    "objectID": "CC2023.html#day-14-new-tool",
+    "href": "CC2023.html#day-14-new-tool",
+    "title": "#30DayChartChallenge",
+    "section": "Day 14: New Tool",
+    "text": "Day 14: New Tool"
+  },
+  {
+    "objectID": "CC2023.html#day-28-trend",
+    "href": "CC2023.html#day-28-trend",
+    "title": "#30DayChartChallenge",
+    "section": "Day 28: Trend",
+    "text": "Day 28: Trend"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Elmera Azadpour",

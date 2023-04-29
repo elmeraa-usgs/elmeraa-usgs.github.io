@@ -22,10 +22,10 @@ website:
         href: Resources.qmd
       - text: R
         href: R_Resources.qmd
+      - text: 2023 Chart Challenge
+        href: CC2023.qmd        
       - text: Blog
         href: blog.qmd
-      - text: CV
-        href: pdfs/Azadpour_Elmera_CV_Sep22.pdf        
       - icon: github
         href: https://github.com/elmeraa-usgs
       - icon: twitter
