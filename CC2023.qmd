@@ -16,13 +16,13 @@ Prompts for this years challenge can be seen below ⬇️
 
 {{< tweet user=30DayChartChall id=1632767770239664134 >}}
 
-April 2023 was my first go at the challenge and I found the overall experience to be really inspiring and creative! Below are my 5️⃣ contributions. In the near future, you'll find code links to my #DataViz made during the Chart Challenge (along with other contributors!) [\@USGSData_Sci](https://twitter.com/USGS_DataSci).
+April 2023 was my first go at the challenge and I found the overall experience to be really inspiring and creative! Below are my 5️⃣ contributions. Check out [this blog post](https://waterdata.usgs.gov/blog/chart-challenge-2023/) that highlights all [\@USGSData_Sci](https://twitter.com/USGS_DataSci) contributions.
 
 ## Day 2: Waffle
 
 {{< tweet user=USGS_DataSci id=1642512475722481676 >}}
 
-## Day 4: Historical
+## Day 4: Historical (w/ Cee Nell)
 
 {{< tweet user=USGS_DataSci id=1643383570965184514 >}}
 
