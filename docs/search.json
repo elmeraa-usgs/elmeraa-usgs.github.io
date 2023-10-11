@@ -1,45 +1,45 @@
 [
   {
-    "objectID": "CC2023.html",
-    "href": "CC2023.html",
-    "title": "#30DayChartChallenge",
+    "objectID": "Research.html",
+    "href": "Research.html",
+    "title": "Research",
     "section": "",
-    "text": "As stated on the site, “The #30DayChartChallenge is a community-driven challenge that happens each year during April. Every day, there is a certain prompt, grouped into five categories: comparisons, distributions, relationships, time series, and uncertainties. Anyone is welcome to contribute, no matter which data source or tool is used to create the visualizations.” More info on code of conduct from creators here.\nPrompts for this years challenge can be seen below ⬇️\n\nApril 2023 was my first go at the challenge and I found the overall experience to be really inspiring and creative! Below are my 5️⃣ contributions. Check out this blog post that highlights all @USGSData_Sci contributions."
+    "text": "Winter 2022, Masters Group Project\n\n\nHigh runoff from urban areas has negative impacts on receiving water bodies. In Hawai’i, this problem is exacerbated by the natural landscape, which rapidly changes from steep ridges to low-lying valleys nearshore. Maunalua Bay, a region located on the southeastern coast of O’ahu, has been declared an impaired water body by the Hawai’i Department of Health due to high levels of nutrients and pollutants. Nine highly urbanized watersheds feed into Maunalua Bay, and runoff during storms deposits harmful sediment and pollutants into the Bay. To improve the health of Maunalua Bay, this project utilized hydrologic modeling to determine the runoff-reduction potential of green infrastructure under climate change projections. We created hydrologic models to determine areas of high runoff to guide where to prioritize green infrastructure placement within the urbanized environment. Green infrastructure is a useful means to capture runoff before it enters a waterbody. Targeting strategic locations for runoff reduction practices, such as green infrastructure, can reduce the quantity of runoff that feeds into Maunalua Bay, improving water quality. We also conducted a climate change analysis by modeling how future precipitation projections might influence regional runoff patterns. Our results can serve to inform stormwater management practices that prioritize green infrastructure placement in high runoff locations modeled under current and future climate scenarios."
   },
   {
-    "objectID": "CC2023.html#day-2-waffle",
-    "href": "CC2023.html#day-2-waffle",
-    "title": "#30DayChartChallenge",
-    "section": "Day 2: Waffle",
-    "text": "Day 2: Waffle"
+    "objectID": "Research.html#identifying-fallowed-parcels-in-kern-county-california-using-an-ndvi-classification-from-landsat-8-toa-imagery",
+    "href": "Research.html#identifying-fallowed-parcels-in-kern-county-california-using-an-ndvi-classification-from-landsat-8-toa-imagery",
+    "title": "Research",
+    "section": "Identifying Fallowed Parcels in Kern County, California using an NDVI Classification from Landsat-8 TOA Imagery",
+    "text": "Identifying Fallowed Parcels in Kern County, California using an NDVI Classification from Landsat-8 TOA Imagery\nAgricultural abandonment (or fallowment) can be described as a situation where [the] human control over land (e.g. agriculture, forestry) is given up and the land is left to nature. Causes of agricultural abandonment range from social, economic, political and environmental factors. Environmental factors such as prolonged drought conditions and water use are drivers in abandoned lands. Persistent drought is creating water shortages throughout the Western United States, thus leading to an increase in the extent of unplanted agricultural lands in California’s Central Valley. Specifically, Kern County, located in California’s San Joaquin Valley, is the largest crop-producing county in California where farmers grow a wide variety of high-value commodities such as almonds, grapes, and pistachios. More recently, Kern County farmers have been faced with persistent drought conditions leading to water shortages and ultimately fallowed lands. Drought conditions across the state have been exacerbated by high temperatures, with 2012–2014 being the hottest three-year period on record. Here, we focus our analysis identifying fallowed parcels in Kern County, California during the 2015 drought period utilizing Top of Atmosphere (TOA) Landsat-8 Imagery from Google Earth Engine (GEE) API."
   },
   {
-    "objectID": "CC2023.html#day-4-historical-w-cee-nell",
-    "href": "CC2023.html#day-4-historical-w-cee-nell",
-    "title": "#30DayChartChallenge",
-    "section": "Day 4: Historical (w/ Cee Nell)",
-    "text": "Day 4: Historical (w/ Cee Nell)"
+    "objectID": "Research.html#rainfall-gradients-across-the-isthmus-of-panama",
+    "href": "Research.html#rainfall-gradients-across-the-isthmus-of-panama",
+    "title": "Research",
+    "section": "Rainfall gradients across the Isthmus of Panama",
+    "text": "Rainfall gradients across the Isthmus of Panama\nAs climate changes, tropical forests will be affected by changes in precipitation and temperature, resulting in feedbacks to global climate and processes. The Functionally-Assembled Terrestrial Ecosystem Simulator (FATES) model, being developed at Berkeley Lab, is structured and parameterized to represent ecological dynamics of tropical forests under different environmental regimes. In this analysis, we assimilated and characterized climate data measured from three sites (Parque Nacional Metropolitano (PNM), Barro Colorado Island (BCI), and Parque Nacional San Lorenzo (SLZ) along a rainfall gradient in Panama. We examined the effects of the rainfall gradient on the FATES predictions of GPP. We found as precipitation increased GPP increased between the three sites, and we found no differences in wet season GPP per leaf area across sites, indicating solar radiation (SR) is driving differences in GPP across the rainfall gradients sites. We also found canopy biomass was highest at SLZ, BCI then PNM during the wet season. However, understory biomass had a declining effect across all sites in the wet season. This work assists in the development and evaluation of the FATES model and aid in predicting the impacts of climate change on forest ecosystem processes and functions."
   },
   {
-    "objectID": "CC2023.html#day-13-pop-culture",
-    "href": "CC2023.html#day-13-pop-culture",
-    "title": "#30DayChartChallenge",
-    "section": "Day 13: Pop Culture",
-    "text": "Day 13: Pop Culture"
+    "objectID": "Research.html#global-photosynthetic-capacity-vcmax-within-canopies",
+    "href": "Research.html#global-photosynthetic-capacity-vcmax-within-canopies",
+    "title": "Research",
+    "section": "Global Photosynthetic Capacity (Vcmax) within Canopies",
+    "text": "Global Photosynthetic Capacity (Vcmax) within Canopies\nMaximum rubisco carboxylation rate (Vcmax) varies with daily integrated quantum flux density (Qint) along vertical transects within forest canopies. In this study, we investigated what drives the patterns of Vcmax plasticity observed within forest canopies, where gradient in light availability from canopy top to bottom can be >50-fold. We conducted correlation analyses of Vcmax plasticity against both environmental (light: PAR, temperature, vapor pressure deficit: VPD, elevation, latitude & longitude) and soil (soil water availability: a, silt content, clay content, pH, C:N & cation exchange capacity: CECS, water content: WC) parameters to explore their influence on Vcmax plasticity within forest canopies and different vegetation types (Deciduous broadleaved forests: Decid. BL, Evergreen temperate: Evergr. temp, Evergreen needle leaf: Evergr. NL, & Evergreen tropical: Evergr. trop). We calculated Vcmax plasticity between Qint step changes: 1-3, 3-6, 6-12,12-20, 20-30, 30-40. For environmental and soil parameters, the most commonly correlated Vcmax plasticity step changes included: plasticity changes 30-40 and 6-12. Our results revealed that Vcmax plasticity varied within plant functional types (PFTs) and for environmental and soil parameters. Two out of seven environmental parameters -VPD and PAR-, and three out of six soil parameters -a, WC & C:N- showed strong correlations across PFTs for Vcmax plasticity step change 12-20. Evergr. NL forests showed strong correlation between Vcmax plasticity step change 12-20 and VPD (R = 0.61); PAR was also strongly correlated with this plasticity step change (R = 0.56); a was negatively correlated within Evergr. NL (R = -0.77); WC was negatively correlated within Decid. BL (R = -0.33); C:N was negatively correlated within Evergr. trop (R = -0.31). PFTs also showed strong correlations between plasticity step change 30-40 for individual environmental and soil parameters. For example, within Decid. BL Vcmax plasticity step change 30-40, results showed elevation (R = 0.92), VPD (R = 0.79) and PAR (R = 0.82) were the strongly correlated. Our study offers an analysis of the relative influence of environmental vs soil parameters on within canopy Vcmax plasticity that can help to better represent global photosynthetic capacity in Earth system models (ESMs)."
   },
   {
-    "objectID": "CC2023.html#day-14-new-tool",
-    "href": "CC2023.html#day-14-new-tool",
-    "title": "#30DayChartChallenge",
-    "section": "Day 14: New Tool",
-    "text": "Day 14: New Tool"
+    "objectID": "Research.html#inorganic-vs.-organic-fertilizer",
+    "href": "Research.html#inorganic-vs.-organic-fertilizer",
+    "title": "Research",
+    "section": "Inorganic vs. organic fertilizer",
+    "text": "Inorganic vs. organic fertilizer\n\n\n\nSummer 2019, Fertilization Study in SLC\n\n\n While lawn management practices have altered the capacity for urban lawns to act as Nitrogen (N) sinks, there have been few studies of the effects of organic vs. inorganic fertilizer additions to urban lawns. We evaluated how foliar and soil N content and isotopic N composition (δ15N) varied as a result of different fertilizer treatment (inorganic, organic or control). We also evaluated differences in lawn above ground net primary productivity (ANPP) among fertilization treatments. We hypothesized that (1) lawn plots managed with organic fertilizer would exhibit lower leaf %N than inorganic fertilizer treatments due to N cycling and losses via leaching; (2) organic fertilizer would exhibit more enriched δ15N in plant and soil tissue due to trophic level effects of animal derived N; (3) the fertilization effect on %N of grasses and soil would be strongest immediately following fertilization and taper off throughout the growing season due to N mineralization losses and immobilization; (4) if soils are N-limited prior to fertilization, fertilized plots - regardless of form (inorganic or organic) – would have higher ANPP compared with control plots. We found that lawn plots managed with organic fertilizer had lower leaf %N than inorganic fertilizer plots, and that all fertilized plots showed a declining treatment effect on %N over time. However, treatment effects on δ15N varied over time. We found that organic fertilizer plots had significantly lower foliar δ15N than inorganic and control throughout the growing season. Finally, we found no differences in ANPP across treatments for plots. In this study, fertilizer treatments did not stimulate ANPP of grasses, suggesting that these lawns were not strongly N-limited prior to fertilization."
   },
   {
-    "objectID": "CC2023.html#day-28-trend",
-    "href": "CC2023.html#day-28-trend",
-    "title": "#30DayChartChallenge",
-    "section": "Day 28: Trend",
-    "text": "Day 28: Trend"
+    "objectID": "R_Resources.html",
+    "href": "R_Resources.html",
+    "title": "R Resources",
+    "section": "",
+    "text": "Interested in resources to help you get started coding in R? Below are some great places to start ⬇️\n\nFree Book: R for Data Science by Hadley Wickham & Garrett Grolemund\n\nThis book gives you an introduction to the word of tidyverse, provides examples on how to build a ggplot visualization, how to wrangle data, build models, and more.\n\nlearnr\n\nThis resource is an interactive way to get hands on practice with R code by providing code exercies and supplemental videos as well.\n\nGeocomputation with R by Robin Lovelace, Jakub Nowosad, Jannes Muenchow\n\nThis book provides an introduction to widley used geospatial packages in R such as sf and terra. Here they cover material on geospatial operations, coordinate reference systems (CRSs), making maps in R, and more.\n\nCheatsheets!\n\nSometimes you just need a quick look to find what function you’re looking to apply. The link above includes cheatsheets for packages such as dplyr, ggplot, stringr and more.\n\nQuarto\n\nQuarto is an open-source scientific and technical publishing system built on Pandoc and can be a great tool for creating high-quality articles, reports, presentations, websites, blogs, and books in HTML, PDF, MS Word, ePub, and more. I recommend checking out Tom Moc’s “Welcome to Quarto Workshop” as a place to start. Mine Çetinkaya-Rundel & Julia Stewart Lowndes’s presentation “Hello Quarto” is another great resource.\n\nCommunity’s of practice\nBelow are some resources that are great for asking questions, getting connected, and building a network of diverse R users!\n\nR-Ladies\n\nR-Ladies is a worldwide organization whose mission is to promote gender diversity in the R community. It’s likely that your community already has a group for you to get connected with. Here are some to name a few: @RLadiesSB, @RLadiesSF, @RLadiesNYC, @RLadiesParis.\n\nR User Groups\n\nMany of these groups below have public slack groups for folks to join and ask code questions, network, and even hear about job postings.\n\nData Visualization Society\nR4DS\nMinorities in R (MiR) Community\nEcoDataScience"
   },
   {
     "objectID": "posts/2021-02-23-text-wrangling-and-analysis/text-wrangling-and-analysis.html",
@@ -306,6 +306,55 @@
     "title": "Principal Component Analysis (PCA)",
     "section": "Summary:",
     "text": "Summary:\n\nThe analysis indicates mean temperature of driest quarter and mean temperature of warmest quarter are strongly positively correlated in multivariate space.\nPrecipitation of warmest quarter is minimally correlated with elevation.\nLastly, elevation is negatively correlated to mean temperature of driest quarter, mean temperature of warmest quarter, and precipitation of coldest quarter.\nPCA analysis also indicates, overall, in multivariate space, countries Rwanda and Burundi are very similar – as well as, countries such as Peru and Bolivia."
+  },
+  {
+    "objectID": "CC2023.html",
+    "href": "CC2023.html",
+    "title": "#30DayChartChallenge",
+    "section": "",
+    "text": "As stated on the site, “The #30DayChartChallenge is a community-driven challenge that happens each year during April. Every day, there is a certain prompt, grouped into five categories: comparisons, distributions, relationships, time series, and uncertainties. Anyone is welcome to contribute, no matter which data source or tool is used to create the visualizations.” More info on code of conduct from creators here.\nPrompts for this years challenge can be seen below ⬇️\n\nApril 2023 was my first go at the challenge and I found the overall experience to be really inspiring and creative! Below are my 5️⃣ contributions. Check out this blog post that highlights all @USGSData_Sci contributions."
+  },
+  {
+    "objectID": "CC2023.html#day-2-waffle",
+    "href": "CC2023.html#day-2-waffle",
+    "title": "#30DayChartChallenge",
+    "section": "Day 2: Waffle",
+    "text": "Day 2: Waffle"
+  },
+  {
+    "objectID": "CC2023.html#day-4-historical-w-cee-nell",
+    "href": "CC2023.html#day-4-historical-w-cee-nell",
+    "title": "#30DayChartChallenge",
+    "section": "Day 4: Historical (w/ Cee Nell)",
+    "text": "Day 4: Historical (w/ Cee Nell)"
+  },
+  {
+    "objectID": "CC2023.html#day-13-pop-culture",
+    "href": "CC2023.html#day-13-pop-culture",
+    "title": "#30DayChartChallenge",
+    "section": "Day 13: Pop Culture",
+    "text": "Day 13: Pop Culture"
+  },
+  {
+    "objectID": "CC2023.html#day-14-new-tool",
+    "href": "CC2023.html#day-14-new-tool",
+    "title": "#30DayChartChallenge",
+    "section": "Day 14: New Tool",
+    "text": "Day 14: New Tool"
+  },
+  {
+    "objectID": "CC2023.html#day-28-trend",
+    "href": "CC2023.html#day-28-trend",
+    "title": "#30DayChartChallenge",
+    "section": "Day 28: Trend",
+    "text": "Day 28: Trend"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Elmera Azadpour",
+    "section": "",
+    "text": "Howdy! I am a Data Scientist/Data Visualization Specialist with United States Geological Survey (USGS) in the Water Mission Area (WMA). My work involves contributing to individual projects by applying reproducible workflows and data visualization techniques to capture and communicate complex data-intensive concepts to non-technical audiences using a variety of media (such as print, web, research products).\nI obtained a Masters of Environmental Science and Management degree from the Bren School at UC, Santa Barbara. During my Masters, I worked as an Arnhold Graduate Fellow utilizing remote sensing and projected land use data sets to track changes in land use relating to agricultural abandonment in the U.S. I obtained a Honors Bachelor of Science in Environmental Biology from the University of Utah. My thesis examined the effects of inorganic vs organic fertilizer on an urban lawn in Salt Lake City, Utah. During undergrad, I also completed two internships at Lawrence Berkeley National Lab where I conducted research analyzing the effects of rainfall gradients on future gross primary productivity across the Isthmus of Panama.\nBroadly, my interests include climate-ecosystem interactions, urban ecology, terrestrial land surface modeling, ecohydrology, global carbon cycling and geophysical science. I am also passionate about environmental/climate justice, BIPOC representation in STEM, and creating open & reproducible data products. Check out some of my recent projects: U.S. River Conditions Animation, U.S Streamflow Conditions, and a recent blog post Jazz up your ggplots!1"
   },
   {
     "objectID": "Resources.html",
