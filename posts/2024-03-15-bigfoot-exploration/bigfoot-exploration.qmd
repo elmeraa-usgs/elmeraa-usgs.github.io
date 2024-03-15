@@ -1,0 +1,115 @@
+---
+title: "Bigfoot Exploration"
+description: |
+  exploring and visualizing Bigfoot Field Researchers Organization (BFRO) data  
+author:
+  - name: Elmera Azadpour
+date: 2024-03-15
+format: html
+categories: [code, analysis, bigfoot]
+image: "mapview-bigfoot.png"
+---
+
+### About
+
+Bigfoot Field Researchers Organization (BFRO) organizes and reports observations and directs expeditions to places where the observations have occurred.The overall mission of the BFRO is multifaceted, but the organization essentially seeks to resolve the mystery surrounding the bigfoot phenomenon, that is, to derive conclusive documentation of the species' existence. This goal is pursued through the proactive collection of empirical data and physical evidence from the field and by means of activities designed to promote an awareness and understanding of the nature and origin of the evidence. See more information about the organization [here](https://www.bfro.net/REF/aboutbfr.asp).
+
+### Load packages
+```{r,  warning=FALSE, message = FALSE}
+library(tidyverse)
+library(lubridate)
+library(sf)
+library(here)
+library(readr)
+library(tidyr)
+library(tigris)
+library(rmapshaper)
+library(mapview)
+```
+
+### Load in Bigfoot sightings data
+```{r,  warning=FALSE, message = FALSE}
+bigfoot_raw <- readr::read_csv(here("posts", "2024-03-15-bigfoot-exploration", "bfro_reports_geocoded.csv")) |> 
+  dplyr::select(county, state, latitude, longitude, date) |> 
+  tidyr::drop_na() |> 
+  mutate(year = year(date)) |> 
+  filter(!state %in% c("Alaska", "Hawaii"),
+         !county %in% c("Idaho County", "Cowlitz County", "Flathead County")) # drop these random counties that are spatially incorrect
+
+head(bigfoot_raw)
+```
+
+
+### Make lat and long spatial features and summarize
+```{r,  error=FALSE, warning=FALSE, message=FALSE}
+# Define the coordinate reference system (CRS)
+crs <- st_crs(4326)
+
+# Convert to an sf object
+bigfoot_sf <- bigfoot_raw |> 
+  st_as_sf(coords = c("longitude", "latitude"), 
+           crs = crs) 
+
+# Summarize the sightings by county
+bigfoot_summary_df <- bigfoot_sf |>
+  group_by(county) |> 
+  summarise(number_of_sightings = n()) |> 
+  ungroup() 
+```
+
+
+### Add conus sf for plotting
+```{r, error = FALSE, warning = FALSE, message = FALSE, output = FALSE}
+conus_sf <- tigris::states(cb = TRUE) |> 
+  st_transform(crs) |> 
+  mutate(group = case_when(
+    STUSPS %in% c(state.abb[!state.abb %in% c('AK', 'HI')], 'DC') ~ 'CONUS',
+    STUSPS %in% c('GU', 'MP') ~ 'GU_MP',
+    STUSPS %in% c('PR', 'VI') ~ 'PR_VI',
+    TRUE ~ STUSPS
+    )) |>
+  filter(group %in% c('CONUS')) |> 
+  rmapshaper::ms_simplify(keep = 0.2)
+
+counties_conus_sf <-tigris::counties() |> 
+  st_transform(crs = crs) |> 
+  left_join(conus_sf |>
+              st_drop_geometry() |>
+              dplyr::select(STUSPS, STATE_NAME = NAME, STATEFP, group),
+                         by = 'STATEFP') |> 
+  rmapshaper::ms_simplify(keep = 0.2) |> 
+  st_intersection(st_union(conus_sf)) |> 
+  rename(county = NAMELSAD)
+```
+### Quick plot of data points
+```{r, fig.cap = "**Figure 1.** Total Number of\nBigfoot Sightings by County (1869-2023)",  warning=FALSE, message = FALSE,  fig.width=14, fig.height=10}
+counties_outline_col = "grey80"
+conus_outline_col = 'grey50'
+
+ggplot()  +
+  geom_sf(data = conus_sf,
+            fill = NA,
+            color  = conus_outline_col ,
+            linewidth = 0.2,
+            linetype = "solid") +
+   geom_sf(data = counties_conus_sf,
+            fill = NA,
+            color  = counties_outline_col ,
+            linewidth = 0.05,
+            linetype = "solid") +
+    geom_sf(data = bigfoot_summary_df,
+           aes(fill = number_of_sightings),
+          pch = 21,
+          color = "white",
+          size = 2,
+          alpha = 0.5) + 
+   theme_void() +
+  labs(fill = "Number of\nSightings")
+```
+# Interactive view of Bigfoot sightings
+```{r,  warning=FALSE, message = FALSE}
+mapview::mapview(bigfoot_summary_df, zcol = "number_of_sightings", at = seq(0, 70, 10), legend = TRUE, 
+                 layer.name = "Total Number of Bigfoot Sightings by County (1869-2023)",
+                 map.types = c("CartoDB.DarkMatter", "Esri.WorldImagery"))
+```
+
