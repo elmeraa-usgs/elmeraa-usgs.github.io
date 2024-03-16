@@ -7,7 +7,7 @@ author:
 date: 2024-03-15
 format: html
 categories: [code, analysis, bigfoot]
-image: "mapview-bigfoot.png"
+image: "mapview-bigfoot-edit.png"
 ---
 
 ### About
