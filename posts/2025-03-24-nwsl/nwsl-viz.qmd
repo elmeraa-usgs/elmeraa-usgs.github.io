@@ -1,0 +1,196 @@
+---
+title: "2024 NWSL Final Standings"
+description: |
+  exploring National Women’s Soccer League (NWSL) data using `nwslR` 
+author:
+  - name: Elmera Azadpour
+date: 2025-03-24
+format: html
+categories: [code, analysis, soccer, dataviz, visualization]
+image: "nwsl-viz-thumbnail.png"
+---
+
+### About
+
+`nwslR` is an R ecosystem that contains datasets and analysis functionality for the National Women's Soccer League (NWSL). The package was developed Arielle Dror and Lydia Jackson, with more information [here](https://github.com/nwslR/nwslR). As a women's soccer fan, I felt it was only right to provide some open-source code to visualize some soccer data! 
+
+### Load packages
+
+```{r,  warning=FALSE, message = FALSE}
+library(tidyverse)
+# install.packages("devtools")
+# devtools::install_github("nwslR/nwslR")
+library(nwslR)
+library(ggimage)
+library(showtext)
+library(sysfonts)
+library(scales)
+library(ggpattern)
+library(forcats)
+library(gtExtras)
+
+# Load custom font
+font_legend <- "Source Sans Pro"
+font_add_google(font_legend)
+showtext_opts(dpi = 300, regular.wt = 200, bold.wt = 700)
+showtext_auto(enable = TRUE)
+```
+
+### Explore 2024 data
+
+```{r, warning=FALSE, message = FALSE}
+teams_2024_names <- c("CHI","HOU","NJY","RGN","ORL","POR","WAS",
+                      "NC", "UTA","KCC","LOU","LA" ,"SD")
+
+matches_2024 <- load_matches() |> 
+  filter(season == 2024)
+
+teams_2024 <- load_teams() |> 
+  filter(team_abbreviation %in% teams_2024_names) |> 
+  select(team_name, team_abbreviation, external_team_id) |> 
+  rename(team_id = external_team_id)
+
+team_stats_2024 <- team_stats <- purrr::map_df(teams_2024_names,
+                                               ~load_team_season_stats(
+                                                 team_id = .x, 
+                                                 season ="2024"),
+                                               .progress = TRUE)
+
+team_stats_w_names_2024 <- team_stats_2024 |> 
+  left_join(teams_2024, by = "team_id") |> 
+  select(team_name, team_abbreviation, yellow_cards,
+         offsides,shot_accuracy, goals, corners_taken, 
+         crosses_corners_successful, passes_total, penalties_saved)
+
+team_stats_w_names_2024
+```
+
+### Add team with their associated logos
+
+```{r}
+team_stats_with_logos <- team_stats_w_names_2024 |> 
+  mutate(
+    # fix names
+    team_name = case_when(
+      str_detect(team_name, "Chicago") ~ "Chicago Red Stars",
+      str_detect(team_name, "Houston") ~ "Houston Dash",
+      str_detect(team_name, "Kansas City") ~ "Kansas City Current",
+      str_detect(team_name, "Gotham") ~ "NJ/NY Gotham FC",
+      str_detect(team_name, "North Caroli") ~ "North Carolina Courage",
+      str_detect(team_name, "OL Reign") ~ "OL Reign",
+      str_detect(team_name, "Orlando") ~ "Orlando Pride",
+      str_detect(team_name, "Portland") ~ "Portland Thorns",
+      str_detect(team_name, "Racing") ~ "Racing Louisville",
+      str_detect(team_name, "Angel") ~ "Angel City FC",
+      str_detect(team_name, "San Diego") ~ "San Diego Wave",
+      str_detect(team_name, "Utah") ~ "Utah Royals FC",
+      str_detect(team_name, "Washington") ~ "Washington Spirit",
+      TRUE ~ team_name
+    ),
+    # add image path automatically
+    logo_path = paste0(
+      "team-logos/",
+      str_replace_all(team_name, c(
+        "/" = "_", " " = "_"
+      )),
+      ".png"
+    )
+  )
+```
+
+### Apply logos to compare goals vs. shot accuracy across teams
+
+```{r, fig.cap = "**Figure 1.** Goals vs. Shot Accuracy, 2024 NWSL Regular Season",  warning=FALSE, message = FALSE,fig.width=12, fig.height=8}
+
+ggplot(team_stats_with_logos, aes(x = goals, y = shot_accuracy)) +
+  geom_image(aes(image = logo_path), size = 0.06, by = "width") +
+  theme_minimal() +
+  labs(title = "Goals vs. Shot Accuracy, 2024 NWSL Regular Season",
+       x = "Goals",
+       y = "Shot Accuracy") +
+  scale_y_continuous(labels = label_percent(scale = 1)) +
+   theme(
+    text = element_text(size = 16, color = "black", family = font_legend,  
+                        margin = margin(r = 5, t = 5, b = 10, l = 20)),
+    plot.margin = margin(t = 10, r = 10, b = 10, l = 10),
+    plot.title = element_text(size = 25, face = "bold", family = font_legend,  
+                              margin = margin(t = 10, b = 10)),
+    axis.title.x = element_text(margin(t = 10), family = font_legend),
+    axis.title.y = element_text(margin(r = 10), family = font_legend)
+  )
+```
+
+### Ranking of total passes
+
+```{r,  fig.cap = "**Figure 2.** Total passes, 2024 NWSL Regular Season",  warning=FALSE, message = FALSE,  fig.width=10, fig.height=8}
+passes_total_order <- team_stats_with_logos |> 
+  mutate(
+    team_name = fct_reorder(team_name, passes_total),
+    passes_label = passes_total
+  )
+
+ggplot(passes_total_order, aes(x = passes_total, y = team_name)) +
+  geom_segment(aes(x = 0, xend = passes_total, yend = team_name),
+               linewidth = 1.2, color = "black") +
+  geom_point(shape = 21, size = 14, fill = "white",
+             stroke = 1.2, color = "black") +
+  geom_text(aes(label = scales::comma(passes_label)), 
+            size = 3, fontface = "bold") +
+  geom_image(aes(x = -1000, image = logo_path), size = 0.04, asp = 1.4) +
+  scale_y_discrete(NULL) +
+  scale_x_continuous(expand = expansion(mult = c(0.2, 0.05))) + 
+  labs(
+    title = "Total Passes, 2024 NWSL Regular Season",
+    x = NULL,
+    y = NULL
+  ) +
+  theme_minimal() +
+  theme(
+    text = element_text(size = 16, color = "black", family = font_legend,  
+                        margin = margin(r = 5, t = 5, b = 10, l = 20)),
+    plot.margin = margin(t = 10, r = 10, b = 10, l = 10),
+    plot.title = element_text(size = 25, face = "bold", family = font_legend,  
+                              margin = margin(t = 10, b = 10)),
+    axis.text = element_blank(),
+    axis.ticks = element_blank(),
+    panel.grid = element_blank()
+  )
+```
+
+### Table of 2024 NWSL Regular season data
+
+```{r, warning=FALSE, message = FALSE}
+table_data <- team_stats_with_logos |> 
+  select(logo_path, team_name, goals, shot_accuracy, passes_total, offsides, yellow_cards,
+         corners_taken, crosses_corners_successful, penalties_saved) |> 
+  mutate(
+    shot_accuracy = paste0(round(shot_accuracy, 1), "%")
+  ) |> 
+  arrange(desc(goals))
+
+table_data |> 
+  gt() |> 
+  gt_img_rows(columns = logo_path, height = 35) |> 
+  tab_header(
+    title = md("**Team Performance Summary**"),
+    subtitle = md("2024 NWSL Regular Season")
+  ) |> 
+  cols_label(
+    logo_path = "",
+    team_name = "Team",
+    goals = "Goals",
+    shot_accuracy = "Shot accuracy",
+    passes_total = "Total passes",
+    offsides = "Offsides", 
+    yellow_cards = "Yellow cards",
+    penalties_saved = "Penalties saved",
+    corners_taken = "Corner kicks taken",
+    crosses_corners_successful = "Successful corner kick crosses"
+  ) |> 
+  tab_options(
+    table.font.size = 14,
+    column_labels.font.weight = "bold",
+    heading.title.font.size = 20,
+    heading.subtitle.font.size = 14
+  )
+```
