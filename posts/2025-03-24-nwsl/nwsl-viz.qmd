@@ -12,7 +12,7 @@ image: "nwsl-viz-thumbnail.png"
 
 ### About
 
-`nwslR` is an R ecosystem that contains datasets and analysis functionality for the National Women's Soccer League (NWSL). The package was developed by Arielle Dror and Lydia Jackson, with more information [here](https://github.com/nwslR/nwslR). As a women's soccer fan, I felt it was only right to provide some open-source code to visualize some soccer data! 
+`nwslR` is an R ecosystem that contains datasets and analysis functionality for the National Women's Soccer League (NWSL). The package was developed by Arielle Dror and Lydia Jackson, with more information [here](https://github.com/nwslR/nwslR). As a women's soccer fan, I felt it was only right to provide some open-source code to visualize some soccer data!
 
 ### Load packages
 

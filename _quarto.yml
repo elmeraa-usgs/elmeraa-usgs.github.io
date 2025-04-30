@@ -26,6 +26,8 @@ website:
         href: CC2023.qmd        
       - text: Blog
         href: blog.qmd
+      - text: Social Media 
+        href: social_media.qmd      
       - icon: github
         href: https://github.com/elmeraa-usgs
       - icon: twitter

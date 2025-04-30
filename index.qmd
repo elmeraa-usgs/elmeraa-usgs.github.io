@@ -17,8 +17,8 @@ about:
       href: https://www.linkedin.com/in/elmera-azadpour-470b9a132/
     - icon: github
       text: Github
-      href: https://github.com/elmeraa-usgs 
----
+      href: https://github.com/elmeraa-usgs
+---       
 
 ::: {style="text-align: left"}
 Howdy! I am a Data Scientist/Data Visualization Specialist with United States Geological Survey (USGS) in the Water Mission Area (WMA). My work involves contributing to individual projects by applying reproducible workflows and data visualization techniques to capture and communicate complex data-intensive concepts to non-technical audiences using a variety of media (such as print, web, research products).
