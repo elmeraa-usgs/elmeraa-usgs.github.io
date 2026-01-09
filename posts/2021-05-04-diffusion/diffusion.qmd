@@ -6,7 +6,7 @@ author:
   - name: Elmera Azadpour
 date: 2021-05-04
 format: html
-categories: [code, analysis, modeling, diffusion]
+categories: [modeling, visualization]
 image: "diffusion.png"
 ---
 

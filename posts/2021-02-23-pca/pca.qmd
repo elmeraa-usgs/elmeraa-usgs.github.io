@@ -6,7 +6,7 @@ author:
   - name: Elmera Azadpour
 date: 2021-02-23
 format: html
-categories: [code, analysis, PCA]
+categories: [code]
 image: "pca.jpg"
 ---
 

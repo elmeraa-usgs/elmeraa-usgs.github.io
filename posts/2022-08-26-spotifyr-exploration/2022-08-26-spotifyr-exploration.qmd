@@ -6,13 +6,13 @@ author:
   - name: Elmera Azadpour
 date: 2022-08-26
 format: html
-categories: [code, analysis, music, spotify]
+categories: [code, spotify, visualization]
 image: "hs.jpg"
 ---
 
 ### About
-spotifyr is an R wrapper for pulling track audio features and other information from Spotify's Web API in bulk. For more information on the package, I'd recommend taking a look at Charlie's [README.md](https://github.com/charlie86/spotifyr) for more details and examples. Here is another great [website](https://towardsdatascience.com/explore-your-activity-on-spotify-with-r-and-spotifyr-how-to-analyze-and-visualize-your-stream-dee41cb63526) from Saúl Buentello that explores the spotifyr package and instructions to download your own spotify data.
 
+spotifyr is an R wrapper for pulling track audio features and other information from Spotify's Web API in bulk. For more information on the package, I'd recommend taking a look at Charlie's [README.md](https://github.com/charlie86/spotifyr) for more details and examples. Here is another great [website](https://towardsdatascience.com/explore-your-activity-on-spotify-with-r-and-spotifyr-how-to-analyze-and-visualize-your-stream-dee41cb63526) from Saúl Buentello that explores the spotifyr package and instructions to download your own spotify data.
 
 ### Load packages
 
@@ -50,8 +50,6 @@ top_art_tracks_long %>%
   head(10) %>% 
   kable()
 ```
-
-
 
 ```{r, warning=FALSE, message =FALSE, include = FALSE}
 ### Find my favorite tracks at the moment
@@ -131,9 +129,10 @@ layout(legend = list(orientation = "h",   # show entries horizontally
 ```
 
 ### Explore my downloaded spotify history
-- I downloaded my data at [https://www.spotify.com/us/account/privacy/](https://www.spotify.com/us/account/privacy/). After logging in, you can select “Download your data” and follow the steps to retrieve your data from your email. 
 
-![](download_spotify_data.jpg) 
+-   I downloaded my data at <https://www.spotify.com/us/account/privacy/>. After logging in, you can select "Download your data" and follow the steps to retrieve your data from your email.
+
+![](download_spotify_data.jpg)
 
 ```{r,  warning=FALSE, message =FALSE}
 # Reading JSON and streaming history
@@ -173,6 +172,7 @@ streamingHours
 ```
 
 ### On what dates did you listen to more or less music by a specific artist?
+
 ```{r,  warning=FALSE, message =FALSE}
 # Playback activity for Harry Styles & Taylor Swift
 hoursArtist <- mySpotify %>% 
@@ -189,6 +189,7 @@ hoursArtist
 ```
 
 ### What were the artists you listened to the most on your Spotify?
+
 ```{r,  warning=FALSE, message =FALSE, fig.width=14, fig.height=10}
 # Most listened artist (more than 3 hours)
 minutesMostListened <- mySpotify %>% 
@@ -209,6 +210,7 @@ minutesMostListened
 ```
 
 ### Exploring my liked tracks
+
 ```{r,warning=FALSE, message =FALSE}
 # Get favorite tracks from likes
 myFavTracks <- ceiling(get_my_saved_tracks(include_meta_info = TRUE)[['total']] / 50) %>%
@@ -221,6 +223,7 @@ myFavTracks <- ceiling(get_my_saved_tracks(include_meta_info = TRUE)[['total']] 
 ```
 
 ### What my top artists based on my liked tracks?
+
 ```{r,  warning=FALSE, message =FALSE}
 favTracksArtist <- myFavTracks %>%
   select(track.artists) %>%

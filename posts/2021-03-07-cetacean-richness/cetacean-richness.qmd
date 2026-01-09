@@ -6,7 +6,7 @@ author:
   - name: Elmera Azadpour
 date: 2021-03-07
 format: html
-categories: [code, analysis, raster]
+categories: [code, maps, visualization]
 image: "cetacean.jpg"
 ---
 

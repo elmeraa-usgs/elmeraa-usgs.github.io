@@ -6,7 +6,7 @@ author:
   - name: Elmera Azadpour
 date: 2021-03-31
 format: html
-categories: [code, analysis, t-test]
+categories: [code, t-test]
 image: "chi-square.jpg"
 ---
 
@@ -23,8 +23,8 @@ library(kableExtra)
 
 ### To access data, html and Rmd/qmd files:
 
--   the sharkbay sea turtles data can be found in the *exam_data* folder of [this repo]( https://github.com/elmeraa/elmera-azadpour-206-final); the Rmd and html files, denoted as *azadpour_turtles*, can be found in the *task_code* folder
--   the qmd format can be found [here](https://github.com/elmeraa/elmeraa.github.io/tree/main/posts/2021-03-31-two-sample-t-test) 
+-   the sharkbay sea turtles data can be found in the *exam_data* folder of [this repo](https://github.com/elmeraa/elmera-azadpour-206-final); the Rmd and html files, denoted as *azadpour_turtles*, can be found in the *task_code* folder
+-   the qmd format can be found [here](https://github.com/elmeraa/elmeraa.github.io/tree/main/posts/2021-03-31-two-sample-t-test)
 
 ## Read in sea turtles data (source: Environmental Data Initiative)
 

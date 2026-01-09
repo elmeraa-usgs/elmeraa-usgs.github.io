@@ -6,15 +6,16 @@ author:
   - name: Elmera Azadpour
 date: 2024-10-04
 format: html
-categories: [code, analysis, capybara, mapview, visualization]
+categories: [code, maps, visualization]
 image: "capy-viz-thumbnail.png"
 ---
 
 ### About
 
-[Global Biodiversity Information Facility (GBIF)](https://www.gbif.org/) is an international network and data infrastructure aimed at providing open access to biodiversity data. It serves as a global database for collecting, sharing, and disseminating biodiversity information from around the world. Here I will quickly demo how you can visualize [Capybara](https://en.wikipedia.org/wiki/Capybara) data from GBIF across Southern America. Capybaras are the world’s largest rodents, with their closest relatives including guinea pigs! These rodents are native to South America and can weigh up to 150 lbs and grow to ~4 ft long. Capybaras grazing helps regulate plant growth in wetland environments since they are herbivores, primarily eating grasses, aquatic plants, and fruit. 
+[Global Biodiversity Information Facility (GBIF)](https://www.gbif.org/) is an international network and data infrastructure aimed at providing open access to biodiversity data. It serves as a global database for collecting, sharing, and disseminating biodiversity information from around the world. Here I will quickly demo how you can visualize [Capybara](https://en.wikipedia.org/wiki/Capybara) data from GBIF across Southern America. Capybaras are the world's largest rodents, with their closest relatives including guinea pigs! These rodents are native to South America and can weigh up to 150 lbs and grow to \~4 ft long. Capybaras grazing helps regulate plant growth in wetland environments since they are herbivores, primarily eating grasses, aquatic plants, and fruit.
 
 ### Load packages
+
 ```{r,  warning=FALSE, message = FALSE}
 library(tidyverse)
 library(tidyr)
@@ -25,7 +26,8 @@ library(rnaturalearthdata)
 library(ggspatial)
 ```
 
-### Read in raw data from Global Biodiversity Information Facilit (GBIF): https://www.gbif.org/species/search 
+### Read in raw data from Global Biodiversity Information Facilit (GBIF): https://www.gbif.org/species/search
+
 ```{r,  warning=FALSE, message = FALSE}
 capy_raw <- readr::read_delim("08162024-GBIF-capybara-data.csv", delim = "\t") |> 
   janitor::clean_names()
@@ -40,6 +42,7 @@ capy_sel <- capy_raw |>
 ```
 
 ### Make lat and long spatial features
+
 ```{r,  error=FALSE, warning=FALSE, message=FALSE}
 capy_sf <- st_as_sf(capy_sel, 
                     coords = c("decimal_longitude", "decimal_latitude"), 
@@ -47,11 +50,13 @@ capy_sf <- st_as_sf(capy_sel,
 ```
 
 ### Load in South America map
+
 ```{r,  error=FALSE, warning=FALSE, message=FALSE}
 south_america <- ne_countries(scale = "medium", continent = "South America", returnclass = "sf")
 ```
 
 ### Create basic ggplot map
+
 ```{r,  error=FALSE, warning=FALSE, message=FALSE}
 ggplot(data = capy_sf) +
   geom_sf(data = south_america, 
@@ -64,6 +69,7 @@ ggplot(data = capy_sf) +
 ```
 
 ### Create hexbin map with log scale
+
 ```{r,  error=FALSE, warning=FALSE, message=FALSE}
 ggplot() +
   geom_sf(data = south_america, 
@@ -88,9 +94,9 @@ ggplot() +
 ```
 
 # Interactive view of Capybara sightings in South America
+
 ```{r,  warning=FALSE, message = FALSE}
 # interactive view
 mapview::mapview(capy_sf, alpha = 0.5, col.regions ="#4a6741", cex = 3,
                  map.types = c("CartoDB.Positron"))
 ```
-

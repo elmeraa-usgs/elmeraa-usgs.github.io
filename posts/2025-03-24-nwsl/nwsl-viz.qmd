@@ -6,7 +6,7 @@ author:
   - name: Elmera Azadpour
 date: 2025-03-24
 format: html
-categories: [code, analysis, soccer, dataviz, visualization]
+categories: [code, soccer, tables, visualization]
 image: "nwsl-viz-thumbnail.png"
 ---
 

@@ -1,18 +1,48 @@
 /*-- scss:defaults --*/
 
-// use litera as the base
+// use litera as the base theme
 $theme: "litera" !default;
 
-// import google fonts
-@import 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap';
+// import Google Fonts
+@import 'https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap';
 @import 'https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap';
 
-// use Atkinson Hyperlegible font if available
-$font-family-sans-serif:  "Atkinson Hyperlegible", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+// main font: Work Sans
+$font-family-sans-serif: "Work Sans",
+  -apple-system,
+  BlinkMacSystemFont,
+  "Segoe UI",
+  Roboto,
+  "Helvetica Neue",
+  Arial,
+  "Noto Sans",
+  sans-serif,
+  "Apple Color Emoji",
+  "Segoe UI Emoji",
+  "Segoe UI Symbol",
+  "Noto Color Emoji" !default;
+
+// Litera defaults to serif — override that too
+$font-family-serif: $font-family-sans-serif !default;
+
+// monospace font for code
+$font-family-monospace: "Fira Code",
+  SFMono-Regular,
+  Menlo,
+  Monaco,
+  Consolas,
+  "Liberation Mono",
+  "Courier New",
+  monospace !default;
 
 /*-- scss:rules --*/
 
-// litera is serif by default: revert to san-serif
-p {
-  font-family: $font-family-sans-serif;
+// optional: slightly lighter body text, cleaner for long reads
+body {
+  font-weight: 400;
+}
+
+// optional: stronger hierarchy for headings
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
 }

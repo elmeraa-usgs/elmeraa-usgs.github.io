@@ -6,14 +6,14 @@ author:
   - name: Elmera Azadpour
 date: 2021-03-07
 format: html
-categories: [code, analysis, hierarchical-clustering]
+categories: [code, dendrogram, visualization]
 image: "clustering.jpg"
 ---
 
 ### To access data, html and Rmd/qmd files:
+
 -   the stream chemistry data can be found in the *data* folder of [this repo](https://github.com/elmeraa/244-assignment4); the Rmd and html files, denoted as *a4-task1*, can be found in the *src* folder
 -   the qmd format can be found [here](https://github.com/elmeraa/elmeraa.github.io/tree/main/posts/2021-03-07-hierarchical-clustering)
-
 
 ## Load packages
 

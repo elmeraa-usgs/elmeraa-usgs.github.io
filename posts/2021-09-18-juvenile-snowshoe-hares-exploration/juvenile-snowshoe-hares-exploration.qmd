@@ -6,13 +6,13 @@ author:
   - name: Elmera Azadpour
 date: 2021-09-18
 format: html
-categories: [code, analysis, linear model]
+categories: [code, linear model]
 ---
 
 ### To access data, html and Rmd/qmd files:
+
 -   the snowshoe hares data can be found in the *data* folder of [this repo](https://github.com/elmeraa/assignment4_ESM206); the Rmd and html files can be found in the *src* folder
 -   the qmd format can be found [here](https://github.com/elmeraa/elmeraa.github.io/tree/main/posts/2021-09-18-juvenile-snowshoe-hares-exploration)
-
 
 ### Load Packages
 

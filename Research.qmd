@@ -8,10 +8,9 @@ format:
     linkcolor: '#117864'
 ---
 
-
 ## [Optimal Green Infrastructure: Reducing Stormwater Pollution in Maunalua Bay, O'ahu, Hawai'i](https://bren.ucsb.edu/projects/optimal-green-infrastructure-reducing-stormwater-pollution-maunalua-bay-oahu-hawaii)
 
-![Winter 2022, Masters Group Project](images/AlohaAina_W22.jpeg) 
+![Winter 2022, Masters Group Project](images/AlohaAina_W22.jpeg)
 
 High runoff from urban areas has negative impacts on receiving water bodies. In Hawai'i, this problem is exacerbated by the natural landscape, which rapidly changes from steep ridges to low-lying valleys nearshore. Maunalua Bay, a region located on the southeastern coast of O'ahu, has been declared an impaired water body by the Hawai'i Department of Health due to high levels of nutrients and pollutants. Nine highly urbanized watersheds feed into Maunalua Bay, and runoff during storms deposits harmful sediment and pollutants into the Bay. To improve the health of Maunalua Bay, this project utilized hydrologic modeling to determine the runoff-reduction potential of green infrastructure under climate change projections. We created hydrologic models to determine areas of high runoff to guide where to prioritize green infrastructure placement within the urbanized environment. Green infrastructure is a useful means to capture runoff before it enters a waterbody. Targeting strategic locations for runoff reduction practices, such as green infrastructure, can reduce the quantity of runoff that feeds into Maunalua Bay, improving water quality. We also conducted a climate change analysis by modeling how future precipitation projections might influence regional runoff patterns. Our results can serve to inform stormwater management practices that prioritize green infrastructure placement in high runoff locations modeled under current and future climate scenarios.
 
@@ -21,6 +20,8 @@ Agricultural abandonment (or fallowment) can be described as a situation where \
 
 ## [Rainfall gradients across the Isthmus of Panama](https://www.osti.gov/dataexplorer/biblio/dataset/1633769)
 
+![Research poster](images/SULI_Spring_2020_ResearchPoster_Azadpour_Elmera.jpg)
+
 As climate changes, tropical forests will be affected by changes in precipitation and temperature, resulting in feedbacks to global climate and processes. The Functionally-Assembled Terrestrial Ecosystem Simulator (FATES) model, being developed at Berkeley Lab, is structured and parameterized to represent ecological dynamics of tropical forests under different environmental regimes. In this analysis, we assimilated and characterized climate data measured from three sites (Parque Nacional Metropolitano (PNM), Barro Colorado Island (BCI), and Parque Nacional San Lorenzo (SLZ) along a rainfall gradient in Panama. We examined the effects of the rainfall gradient on the FATES predictions of GPP. We found as precipitation increased GPP increased between the three sites, and we found no differences in wet season GPP per leaf area across sites, indicating solar radiation (SR) is driving differences in GPP across the rainfall gradients sites. We also found canopy biomass was highest at SLZ, BCI then PNM during the wet season. However, understory biomass had a declining effect across all sites in the wet season. This work assists in the development and evaluation of the FATES model and aid in predicting the impacts of climate change on forest ecosystem processes and functions.
 
 ## [Global Photosynthetic Capacity (Vcmax) within Canopies](https://agu-do03.confex.com/agu/fm19/meetingapp.cgi/Paper/500362)
@@ -29,6 +30,6 @@ Maximum rubisco carboxylation rate (Vcmax) varies with daily integrated quantum 
 
 ## [Inorganic *vs.* organic fertilizer](https://collections.lib.utah.edu/ark:/87278/s6bk7290)
 
-![Summer 2019, Fertilization Study in SLC ](images/azadpour-thesis.jpg)
+![Summer 2019, Fertilization Study in SLC](images/azadpour-thesis.jpg)
 
 <left> While lawn management practices have altered the capacity for urban lawns to act as Nitrogen (N) sinks, there have been few studies of the effects of organic vs. inorganic fertilizer additions to urban lawns. We evaluated how foliar and soil N content and isotopic N composition (δ15N) varied as a result of different fertilizer treatment (inorganic, organic or control). We also evaluated differences in lawn above ground net primary productivity (ANPP) among fertilization treatments. We hypothesized that (1) lawn plots managed with organic fertilizer would exhibit lower leaf %N than inorganic fertilizer treatments due to N cycling and losses via leaching; (2) organic fertilizer would exhibit more enriched δ15N in plant and soil tissue due to trophic level effects of animal derived N; (3) the fertilization effect on %N of grasses and soil would be strongest immediately following fertilization and taper off throughout the growing season due to N mineralization losses and immobilization; (4) if soils are N-limited prior to fertilization, fertilized plots - regardless of form (inorganic or organic) -- would have higher ANPP compared with control plots. We found that lawn plots managed with organic fertilizer had lower leaf %N than inorganic fertilizer plots, and that all fertilized plots showed a declining treatment effect on %N over time. However, treatment effects on δ15N varied over time. We found that organic fertilizer plots had significantly lower foliar δ15N than inorganic and control throughout the growing season. Finally, we found no differences in ANPP across treatments for plots. In this study, fertilizer treatments did not stimulate ANPP of grasses, suggesting that these lawns were not strongly N-limited prior to fertilization.
