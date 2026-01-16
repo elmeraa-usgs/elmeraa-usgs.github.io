@@ -7,6 +7,9 @@ $theme: "litera" !default;
 @import 'https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap';
 @import 'https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap';
 
+@import 'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap'
+;
+
 // main font: Work Sans
 $font-family-sans-serif: "Work Sans",
   -apple-system,
@@ -45,4 +48,10 @@ body {
 // optional: stronger hierarchy for headings
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
+}
+
+// Disable font ligatures in code blocks so |> renders normally
+pre, code {
+  font-family: "IBM Plex Mono", monospace;
+  line-height: 1.55;
 }

@@ -18,15 +18,13 @@ An anomaly can be defined as something that deviates from what is standard, norm
 
 ```{r,  warning=FALSE, message = FALSE}
 library(tidyverse) # for wrangling data frames
+library(dataRetrieval) # for loading streamflow data
+library(sf) # for wrangling spatial features
+library(mapview) # for interactive map view
 library(showtext) # for custom font loading
 library(sysfonts) # for custom font loading
-library(dataRetrieval) # for loading streamflow data
 library(scales) # for custom breaks/labels on legend 
 library(scico) # for color palette 
-library(janitor) # for data cleaning 
-library(sf) # for wrangling spatial features
-library(tigris) # for loading states data 
-library(rmapshaper) # for simplifying spatial features
 library(cowplot) # for composing final plot 
 ```
 
@@ -66,16 +64,24 @@ dv <- read_waterdata_daily(
   parameter_code = parameter_id, 
   statistic_id = stat_id,
   time = c(start_date, end_date),
-  skipGeometry = TRUE
+  skipGeometry = FALSE
 )
 
 head(dv, n = 5)
 ```
+### View gage
+
+Using [mapview](https://github.com/r-spatial/mapview), you can take a gander at the location of the streamgage on the Potomac River, Maryland. 
+```{r}
+mapview(slice_head(dv, n = 1))
+```
 
 ### Prepare daily anomalies within each year
+
 To quantify changes from typical conditions, daily discharge values are converted to percent anomalies relative to each year’s mean. This normalizes variability across wet and dry years while preserving seasonal patterns.
 ```{r, warning=FALSE, message = FALSE}
 dv_proc <- dv |> 
+  st_drop_geometry() |> 
   mutate(
     date = as.Date(time),
     year = year(date),
@@ -90,6 +96,7 @@ dv_proc <- dv |>
 ```
 
 ### Create stripe plot
+
 Below we'll make a stripe plot where each row represents a year and each column a day of the year, with color indicating the magnitude and direction of the discharge anomaly. This stripe style layout highlights seasonality, extremes, and longterm shifts in streamflow at a glance.
 ```{r, warning=FALSE, message = FALSE}
 base_plot <- ggplot(
@@ -147,6 +154,7 @@ base_plot
 ```
 
 ### Function to grab legend grob
+
 Since the final figure is assembled with [`cowplot`](https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html), the legend will need to be extracted from the `ggplot` object. This helper function safely returns the first nonempty legend grob for manual placement downstream.
 ```{r, warning=FALSE, message = FALSE}
 
@@ -174,6 +182,7 @@ get_legend_non0 <- function(plot) {
 ```
 
 ### Compose final plot
+
 We can now combine the elements on a custom canvas using `cowplot`, allowing nice control over layout, text, and legend placement. The final plot is then exported using `ggsave()`.
 ```{r, warning=FALSE, message = FALSE}
 # Pull legend 
